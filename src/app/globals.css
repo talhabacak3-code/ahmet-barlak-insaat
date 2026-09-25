@@ -222,6 +222,76 @@ svg {
   transform: none;
 }
 
+/* Gece silüeti: pencereler soldan sağa yanar, bazıları titrer, yıldızlar parlar */
+.wl {
+  opacity: var(--o, 1);
+}
+.motion [data-draw] .wl {
+  opacity: 0;
+  transition: opacity 0.9s ease var(--delay, 0s);
+}
+.motion [data-draw].is-in .wl {
+  opacity: var(--o, 1);
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: var(--o, 1);
+  }
+  48% {
+    opacity: var(--o, 1);
+  }
+  52% {
+    opacity: 0.06;
+  }
+  60% {
+    opacity: 0.06;
+  }
+  64% {
+    opacity: var(--o, 1);
+  }
+}
+.motion [data-draw].is-in .wf {
+  animation: flicker 9s ease-in-out var(--fd, 6s) infinite;
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+.motion .st {
+  animation: twinkle var(--td, 4s) ease-in-out var(--sd, 0s) infinite;
+}
+@keyframes wave {
+  0%,
+  100% {
+    transform: none;
+  }
+  30% {
+    transform: skewY(-5deg) scaleX(0.95);
+  }
+  65% {
+    transform: skewY(3deg) scaleX(0.98);
+  }
+}
+.motion .flag-wave {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  animation: wave 2.6s ease-in-out infinite;
+}
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.motion .ring-spin {
+  animation: ring-spin 28s linear infinite;
+}
+
 /* Hero (CSS-only, runs before hydration) */
 @keyframes rise {
   from {

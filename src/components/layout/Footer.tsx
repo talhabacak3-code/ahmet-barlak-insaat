@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="on-dark bg-ink pb-24 text-paper md:pb-10" data-hide-callbar>
       <div className="shell">
-        <div className="grid gap-12 border-t border-paper/15 pt-14 md:grid-cols-12">
+        <div className="grid gap-12 pt-14 md:grid-cols-12">
           <div className="md:col-span-5">
             <Logo tone="light" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-paper/65">{site.description}</p>
@@ -75,9 +75,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="label mt-16 flex flex-col gap-3 border-t border-paper/15 pt-6 text-paper/45 sm:flex-row sm:justify-between">
+        <div className="label mt-16 flex flex-col gap-3 border-t border-paper/15 pt-6 text-paper/45 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} {site.name}</span>
-          <span>{site.coordinates} · Afyonkarahisar</span>
+          <span className="hidden md:block">{site.coordinates} · Afyonkarahisar</span>
+          <a href="#icerik" className="u-link w-fit text-paper/70 hover:text-paper">
+            Başa dön ↑
+          </a>
         </div>
       </div>
     </footer>

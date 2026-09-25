@@ -10,12 +10,12 @@ export const GROUND = 320;
 const d = (delay: number, dur?: number) => ({ "--delay": `${delay}s`, ...(dur ? { "--dur": `${dur}s` } : {}) }) as CSSProperties;
 
 type B = [x: number, w: number, top: number];
-const CITY: B[] = [
+export const CITY: B[] = [
   [492, 64, 248], [562, 52, 222], [620, 60, 262], [896, 62, 238], [964, 88, 206], [1058, 56, 252],
   [1120, 100, 190], [1226, 60, 240], [1292, 84, 214], [1382, 50, 258], [1438, 92, 230], [1536, 64, 262],
 ];
 
-const winGrid = (x: number, w: number) => {
+export const winGrid = (x: number, w: number) => {
   const cols = Math.max(2, Math.floor((w - 12) / 14));
   return { cols, gap: (w - 12) / cols };
 };
@@ -34,18 +34,22 @@ const LIT: [number, number, number][] = [
   [1, 2, 1], [4, 1, 3], [4, 4, 0], [6, 2, 2], [6, 5, 5], [8, 3, 1], [10, 1, 4], [7, 2, 0], [0, 1, 0], [11, 1, 2],
 ];
 
-function crenellation(x0: number, x1: number, base: number, top: number) {
+/** Afyon Kalesi kayası */
+export const CASTLE =
+  "M40 320 C80 316 118 300 140 272 C160 246 170 214 186 186 C200 160 210 128 226 104 C236 88 246 76 258 70 L330 66 C344 70 352 82 360 98 C372 124 380 158 398 190 C414 220 426 256 446 284 C456 300 466 312 480 320";
+
+export function crenellation(x0: number, x1: number, base: number, top: number) {
   let p = `M${x0} ${base}V${top}`;
   for (let x = x0; x < x1; x += 8) p += `h4v-5h4v5`;
   return p + `V${base}`;
 }
 
 // İnşa hâlindeki yapı
-const HB = { x: 716, w: 112, top: 118 };
+export const HB = { x: 716, w: 112, top: 118 };
 /** Çatıdaki sabit piksel kümesi (logodaki yapı taşları) */
-const CLUSTER = [[818, 108], [806, 108], [794, 108], [818, 96], [806, 96]];
+export const CLUSTER = [[818, 108], [806, 108], [794, 108], [818, 96], [806, 96]];
 /** Logodaki gibi dağılmış pikseller */
-const FLOAT = [[834, 98], [834, 84]];
+export const FLOAT = [[834, 98], [834, 84]];
 /** Vincin sırayla doldurduğu boş yuvalar */
 export const SLOTS = [[782, 108], [794, 96], [806, 84], [818, 84]];
 /** Yerdeki paletten alınan blok */
@@ -91,7 +95,7 @@ export function Skyline({ className = "", mode = "hero" }: { className?: string;
           className="drw drw-bold dl"
           pathLength={1}
           style={{ ...d(0.4, 2.2), fill: "var(--color-paper)" }}
-          d="M40 320 C80 316 118 300 140 272 C160 246 170 214 186 186 C200 160 210 128 226 104 C236 88 246 76 258 70 L330 66 C344 70 352 82 360 98 C372 124 380 158 398 190 C414 220 426 256 446 284 C456 300 466 312 480 320"
+          d={CASTLE}
         />
         <g className="drw drw-thin" opacity="0.7">
           {[
