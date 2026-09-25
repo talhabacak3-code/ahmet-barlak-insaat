@@ -29,15 +29,19 @@ export function ProcessStory() {
         gsap.set(svg.querySelectorAll(".pf"), { opacity: 0 });
         gsap.set(svg.querySelectorAll(".pb"), { scaleY: 0, transformOrigin: "50% 100%" });
 
+        // 0 keşif — çizim görünür olur olmaz kendiliğinden çizilir (kutu hiç boş kalmaz)
+        gsap
+          .timeline({ scrollTrigger: { trigger: el.querySelector("[data-frame]"), start: "top 80%", once: true } })
+          .to(pd(stage(0)), { strokeDashoffset: 0, stagger: 0.18, duration: 1.3, ease: "power2.out" })
+          .to(pf(stage(0)), { opacity: 1, duration: 0.6 }, "<0.5");
+
+        // 1–4 kaydırmayla inşa edilir
         const tl = gsap.timeline({
           defaults: { ease: "none" },
-          scrollTrigger: { trigger: el.querySelector("[data-steps]"), start: "top 70%", end: "bottom 75%", scrub: 0.6 },
+          scrollTrigger: { trigger: el.querySelector("[data-steps]"), start: "top 55%", end: "bottom 75%", scrub: 0.6 },
         });
-
-        // 0 keşif
-        tl.to(pd(stage(0)), { strokeDashoffset: 0, stagger: 0.15, duration: 1 }).to(pf(stage(0)), { opacity: 1, duration: 0.4 }, "<0.3");
         // 1 aks & kot
-        tl.to(pf(stage(1)), { opacity: 1, stagger: 0.08, duration: 0.5 }, "+=0.3");
+        tl.to(pf(stage(1)), { opacity: 1, stagger: 0.08, duration: 0.5 });
         // 2 temel (keşif ekipmanı çekilir)
         tl.to(svg.querySelector("[data-survey]"), { opacity: 0, duration: 0.4 }, "+=0.3")
           .to(pd(stage(2)), { strokeDashoffset: 0, stagger: 0.1, duration: 0.8 }, "<")
@@ -65,28 +69,42 @@ export function ProcessStory() {
     { scope: root },
   );
 
+  const pad = (n: number) => String(n).padStart(2, "0");
+
   return (
-    <section ref={root} aria-labelledby="surec-baslik" className="on-dark relative bg-ink text-paper">
+    <section ref={root} aria-labelledby="surec-baslik" className="relative bg-paper-2 text-ink">
       <div className="shell section-y">
         <div className="grid gap-6 lg:grid-cols-12">
-          <p className="label text-brand-soft lg:col-span-3">
+          <p className="label text-brand lg:col-span-3">
             <span aria-hidden="true">§ </span>Süreç
           </p>
-          <h2 id="surec-baslik" data-reveal="lines" className="display text-[clamp(2.4rem,6vw,5.6rem)] lg:col-span-9">
-            Arsadan anahtara beş aşama.
-          </h2>
+          <div className="lg:col-span-9">
+            <h2 id="surec-baslik" data-reveal="lines" className="display text-[clamp(2.4rem,6vw,5.6rem)]">
+              Arsadan anahtara beş aşama.
+            </h2>
+            <p data-reveal="fade" className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/70">
+              Her aşamanın bir çıktısı, bir sorumlusu ve bir takvimi var. Kaydırdıkça yapının nasıl yükseldiğini izleyin.
+            </p>
+          </div>
         </div>
 
         <div className="mt-12 grid gap-0 lg:mt-20 lg:grid-cols-12 lg:gap-6">
-          {/* Çizim — mobilde bölüm başında yapışkan şerit, masaüstünde sol sütun */}
-          <div className="sticky top-0 z-10 -mx-[var(--gutter)] bg-ink px-[var(--gutter)] pb-4 pt-[calc(var(--header-h)-24px)] lg:top-[calc(var(--header-h)+24px)] lg:col-span-6 lg:mx-0 lg:h-[calc(100svh-var(--header-h)-48px)] lg:self-start lg:bg-transparent lg:px-0 lg:pb-0 lg:pt-0">
-            <div className="relative flex h-[34svh] items-center justify-center text-paper/85 lg:h-full lg:border lg:border-paper/15">
-              <BuildingStages className="scale-lines h-full w-auto max-w-full [&_.accent]:text-brand-soft" />
-              <p className="label absolute right-0 top-0 hidden p-4 text-paper/50 lg:block" aria-hidden="true">
-                Aşama {String(active + 1).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
-              </p>
-              <div className="absolute inset-x-0 bottom-0 h-px bg-paper/15 lg:hidden" aria-hidden="true">
-                <div className="h-full origin-left bg-brand-soft transition-transform duration-500" style={{ transform: `scaleX(${(active + 1) / steps.length})` }} />
+          {/* Çizim masası — mobilde bölüm başında yapışkan şerit, masaüstünde sol sütun */}
+          <div className="sticky top-0 z-10 -mx-[var(--gutter)] bg-paper-2 px-[var(--gutter)] pb-4 pt-[var(--header-h)] lg:top-[calc(var(--header-h)+24px)] lg:col-span-6 lg:mx-0 lg:h-[calc(100svh-var(--header-h)-48px)] lg:self-start lg:bg-transparent lg:px-0 lg:pb-0 lg:pt-0">
+            <div data-frame className="crop mm-grid relative flex h-[36svh] flex-col border border-ink/20 text-ink shadow-[0_1px_0_rgb(25_23_21/0.04),0_18px_40px_-24px_rgb(25_23_21/0.25)] lg:h-full">
+              <div className="flex min-h-0 flex-1 items-center justify-center p-3 lg:p-6">
+                <BuildingStages className="scale-lines h-full w-auto max-w-full [&_.accent]:text-brand [&_[data-stage='1']]:text-brand" />
+              </div>
+              {/* antet */}
+              <div aria-hidden="true" className="label grid grid-cols-3 border-t border-ink/20 bg-paper text-[0.62rem] text-muted">
+                <span className="border-r border-ink/20 px-3 py-2">Pafta · Süreç</span>
+                <span className="border-r border-ink/20 px-3 py-2">
+                  Aşama <span className="text-brand">{pad(active + 1)}</span> / {pad(steps.length)}
+                </span>
+                <span className="px-3 py-2 text-right">Ölçek 1:100</span>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 h-0.5 bg-ink/10" aria-hidden="true">
+                <div className="h-full origin-left bg-brand transition-transform duration-500" style={{ transform: `scaleX(${(active + 1) / steps.length})` }} />
               </div>
             </div>
           </div>
@@ -96,13 +114,22 @@ export function ProcessStory() {
               <li
                 key={s.title}
                 data-step
-                className={`flex min-h-[46svh] flex-col justify-center border-b border-paper/15 py-12 transition-opacity duration-500 last:border-b-0 lg:min-h-[62svh] motion-reduce:opacity-100 ${
-                  active === i ? "opacity-100" : "opacity-35"
+                className={`flex min-h-[46svh] flex-col justify-center border-b border-ink/15 py-12 transition-opacity duration-500 last:border-b-0 lg:min-h-[62svh] motion-reduce:opacity-100 ${
+                  active === i ? "opacity-100" : "opacity-40"
                 }`}
               >
-                <span className="label text-brand-soft">Aşama {String(i + 1).padStart(2, "0")}</span>
-                <h3 className="display mt-4 text-[clamp(2rem,4vw,3.4rem)]">{s.title}</h3>
-                <p className="mt-5 max-w-md text-[1.05rem] leading-relaxed text-paper/70">{s.text}</p>
+                <span className="flex items-center gap-3">
+                  <span
+                    className={`grid size-9 place-items-center rounded-full border font-mono text-xs transition-colors duration-500 ${
+                      active === i ? "border-brand bg-brand text-paper" : "border-ink/30 text-ink/70"
+                    }`}
+                  >
+                    {pad(i + 1)}
+                  </span>
+                  <span className="label text-brand">Aşama</span>
+                </span>
+                <h3 className="display mt-5 text-[clamp(2rem,4vw,3.4rem)]">{s.title}</h3>
+                <p className="mt-5 max-w-md text-[1.05rem] leading-relaxed text-ink/70">{s.text}</p>
               </li>
             ))}
           </ol>

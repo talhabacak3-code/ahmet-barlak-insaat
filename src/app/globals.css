@@ -105,6 +105,22 @@ svg {
   background-size: calc((100% - 1px) / 12) 100%;
 }
 
+/* Milimetrik çizim kâğıdı — logodaki bordo tonunda */
+.mm-grid {
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(rgb(122 30 41 / 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(122 30 41 / 0.11) 1px, transparent 1px),
+    linear-gradient(rgb(122 30 41 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(122 30 41 / 0.045) 1px, transparent 1px);
+  background-size:
+    40px 40px,
+    40px 40px,
+    8px 8px,
+    8px 8px;
+  background-position: -1px -1px;
+}
+
 /* Hatch (tarama) — kesit dolgusu */
 .hatch {
   background-image: repeating-linear-gradient(-45deg, var(--line) 0 1px, transparent 1px 9px);
