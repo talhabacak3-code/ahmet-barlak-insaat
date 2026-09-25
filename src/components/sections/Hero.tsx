@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { Skyline } from "@/components/drawings/Skyline";
+import { LivingSkyline } from "@/components/drawings/LivingSkyline";
 import { site } from "@/content/site";
 
 const dl = (s: number) => ({ "--delay": `${s}s` }) as CSSProperties;
@@ -55,9 +55,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative w-full overflow-hidden">
-        <Skyline className="aspect-[1000/380] w-full md:aspect-[1600/360]" />
-      </div>
+      <LivingSkyline className="aspect-[1000/380] w-full md:aspect-[1600/360]" />
 
       <div className="shell">
         <dl className="hero-fade grid grid-cols-2 border-t hairline md:grid-cols-4" style={dl(1.2)}>

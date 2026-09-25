@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { Principles } from "@/components/sections/Principles";
 import { ContactFinale } from "@/components/sections/ContactFinale";
-import { Skyline } from "@/components/drawings/Skyline";
+import { LivingSkyline } from "@/components/drawings/LivingSkyline";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = pageMeta({
@@ -76,7 +76,9 @@ export default function KurumsalPage() {
             </Link>
           </div>
         </div>
-        <Skyline mode="scroll" className="mt-16 aspect-[1000/380] w-full md:aspect-[1600/360]" />
+        <div className="mt-16">
+          <LivingSkyline mode="scroll" className="aspect-[1000/380] w-full md:aspect-[1600/360]" />
+        </div>
       </section>
 
       <ContactFinale />
