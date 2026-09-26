@@ -1,5 +1,18 @@
 # Art Direction — Ahmet Barlak İnşaat & Mühendislik
 
+> **Güncel tasarım sistemi (v2):** Site, kullanıcının sağladığı DESIGN.md referansına ("kamp ateşi başında edebiyat dergisi") taşındı.
+> Kaynak tokenlar `src/app/globals.css` içinde. Özet:
+>
+> - **Zemin:** Parchment `#fefffc`, kartlar `#ffffff`, form/yüzey `#f9faf7`; kıl çizgi `#dee2de` (Mist).
+> - **Metin:** Graphite `#2c2c2c` başlık, Charcoal `#444141` gövde, Ash `#646464` yardımcı. Metinde saydamlık yok.
+> - **Tek vurgu:** DESIGN.md'deki Signal Blue yerine **logo bordosu `#7a1e29`** — yalnızca kenarlıklı birincil buton ve küçük vurgular. Renkli yüzey tek yerde: İlkeler kartı. Gece kartı Dusk `#1f1f29`.
+> - **Tipografi:** Başlık Fraunces 400 (ppmondwest yedeği), `-0.02em`, satır 1.1, liga kapalı; gövde Geist 400/500; çizim etiketleri Geist Mono; logo yazısı Archivo geniş italik.
+> - **Şekil:** Buton 8px, kart 12px, diyagram kartı 16px, atmosferik yüzey 24px, navigasyon hapı tam yuvarlak. Butonlarda gölge yok.
+> - **Bileşenler:** Buzlu cam navigasyon hapı, hero'da buzlu cam başlık kartı, kenarlıklı birincil / ikincil buton, tek dolu koyu buton, beyaz içerik kartı, diyagram kartı (süreç çizimi), atmosferik kartlar (İlkeler, gece silüeti), linen dolgulu alt çizgili form alanı, beyaz künye footer.
+> - **Korunanlar:** Teknik çizim illüstrasyonları (canlı silüet, süreç çizimi, gece silüeti), hareket sistemi.
+>
+> Aşağıdaki bölümler v1 ("Pafta") yönünün kayıtlarıdır; illüstrasyon ve hareket kısımları hâlâ geçerlidir.
+
 ## Proje özeti
 
 - **İşletme:** İnşaat & mühendislik firması, Afyonkarahisar merkez (Karaman Mah., Leylak Cd. No:24/B).

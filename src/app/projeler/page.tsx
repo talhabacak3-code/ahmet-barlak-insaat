@@ -15,9 +15,8 @@ export default function ProjelerPage() {
   return (
     <>
       <PageHero
-        sheet="04"
         eyebrow="Projeler"
-        lines={["Her proje", <>bir <em className="italic text-brand wdth-125">pafta.</em></>]}
+        lines={["Her proje", <>bir <em className="text-brand">pafta.</em></>]}
         lead="Tamamlanan ve devam eden işlerimiz; türü, konumu ve durumuyla teknik bir kayıt olarak."
       />
       <ProjectsGrid projects={site.projects} />

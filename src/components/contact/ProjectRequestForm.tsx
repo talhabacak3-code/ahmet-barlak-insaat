@@ -40,12 +40,13 @@ export function ProjectRequestForm() {
     }
   };
 
-  const field = "peer h-14 w-full border-0 border-b border-ink/35 bg-transparent px-0 pt-4 text-[1.02rem] outline-none transition-colors focus:border-brand focus-visible:outline-none";
-  const label = "label pointer-events-none absolute left-0 top-0 text-muted transition-colors peer-focus:text-brand";
+  // DESIGN.md form alanı: linen dolgu, yalnız alt çizgi, köşesiz
+  const field = "field peer h-[58px]";
+  const label = "label pointer-events-none absolute left-3 top-2 text-[12px] text-muted transition-colors peer-focus:text-brand";
 
   if (!site.whatsapp) {
     return (
-      <p className="text-lg">
+      <p className="text-[17px] text-charcoal">
         Proje talepleriniz için bizi arayın:{" "}
         <a className="u-link font-medium" href={site.phone.href}>
           {site.phone.display}
@@ -55,8 +56,8 @@ export function ProjectRequestForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate aria-describedby={`${id}-not`} className="grid gap-8">
-      <div className="grid gap-8 sm:grid-cols-2">
+    <form onSubmit={onSubmit} noValidate aria-describedby={`${id}-not`} className="grid gap-4">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div className="relative">
           <input id={`${id}-ad`} name="ad" autoComplete="name" required className={field} />
           <label htmlFor={`${id}-ad`} className={label}>
@@ -70,9 +71,9 @@ export function ProjectRequestForm() {
           </label>
         </div>
       </div>
-      <div className="grid gap-8 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div className="relative">
-          <select id={`${id}-hizmet`} name="hizmet" defaultValue={initial} className={`${field} cursor-pointer appearance-none`}>
+          <select id={`${id}-hizmet`} name="hizmet" defaultValue={initial} className={`${field} cursor-pointer appearance-none pr-10`}>
             <option value="">Seçiniz</option>
             {site.services.map((s) => (
               <option key={s.slug} value={s.title}>
@@ -84,12 +85,12 @@ export function ProjectRequestForm() {
           <label htmlFor={`${id}-hizmet`} className={label}>
             Hizmet
           </label>
-          <span aria-hidden="true" className="pointer-events-none absolute bottom-4 right-0 text-sm">
+          <span aria-hidden="true" className="pointer-events-none absolute bottom-3 right-3 text-sm text-muted">
             ↓
           </span>
         </div>
         <div className="relative">
-          <input id={`${id}-konum`} name="konum" placeholder=" " className={field} />
+          <input id={`${id}-konum`} name="konum" className={field} />
           <label htmlFor={`${id}-konum`} className={label}>
             Arsa / yapı konumu
           </label>
@@ -108,10 +109,10 @@ export function ProjectRequestForm() {
         </p>
       )}
 
-      <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="group flex h-14 items-center justify-between gap-8 bg-ink px-6 text-paper transition-colors hover:bg-brand">
-          <span className="font-medium">WhatsApp ile gönder</span>
-          <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
+      <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <button type="submit" className="btn btn-dark">
+          WhatsApp ile gönder
+          <span aria-hidden="true" className="btn-arrow">
             ↗
           </span>
         </button>

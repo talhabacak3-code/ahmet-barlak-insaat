@@ -6,6 +6,7 @@ import { Principles } from "@/components/sections/Principles";
 import { ContactFinale } from "@/components/sections/ContactFinale";
 import { LivingSkyline } from "@/components/drawings/LivingSkyline";
 import { site } from "@/content/site";
+import { SectionHead } from "@/components/ui/SectionHead";
 
 export const metadata: Metadata = pageMeta({
   title: "Kurumsal",
@@ -17,12 +18,11 @@ export default function KurumsalPage() {
   return (
     <>
       <PageHero
-        sheet="02"
         eyebrow="Kurumsal"
         lines={[
           "Hesapla başlayan,",
           <>
-            <em className="italic text-brand wdth-125">yerinde</em> yürüyen
+            <em className="text-brand">yerinde</em> yürüyen
           </>,
           "yapılar.",
         ]}
@@ -30,18 +30,14 @@ export default function KurumsalPage() {
       />
 
       <section aria-labelledby="yaklasim-baslik" className="border-t hairline">
-        <div className="shell grid gap-12 py-[var(--section-y)] lg:grid-cols-12 lg:gap-6">
-          <div className="lg:col-span-3">
-            <p className="label text-brand">
-              <span aria-hidden="true">§ </span>Yaklaşım
-            </p>
-          </div>
-          <div className="lg:col-span-5">
-            <h2 id="yaklasim-baslik" data-reveal="lines" className="display text-[clamp(2rem,4.2vw,3.8rem)]">
+        <div className="shell grid gap-10 py-[var(--section-y)] md:grid-cols-12 md:gap-10">
+          <div className="md:col-span-6">
+            <p className="label text-muted">Yaklaşım</p>
+            <h2 id="yaklasim-baslik" data-reveal="lines" className="display mt-4 text-[clamp(2rem,3.6vw,3rem)] text-ink">
               Bir binayı değil, bir süreci teslim ederiz.
             </h2>
           </div>
-          <div className="grid gap-6 text-[1.05rem] leading-relaxed text-ink/80 lg:col-span-4" data-reveal="fade" data-stagger>
+          <div className="grid gap-5 text-[17px] leading-[1.55] text-charcoal md:col-span-6" data-reveal="fade" data-stagger>
             <p>
               İnşaat, arsa sahibi için çoğu zaman hayatının en büyük kararlarından biridir. Bu yüzden işe yapıdan önce insandan başlıyoruz: ihtiyacı, bütçeyi ve
               beklentiyi netleştirmeden tek bir çizgi çizmiyoruz.
@@ -58,26 +54,25 @@ export default function KurumsalPage() {
 
       <Principles heading="Dört çalışma ilkesi." />
 
-      <section aria-labelledby="yerel-baslik" className="overflow-hidden">
-        <div className="shell grid gap-10 pt-[var(--section-y)] lg:grid-cols-12 lg:gap-6">
-          <p className="label text-brand lg:col-span-3">
-            <span aria-hidden="true">§ </span>Yerel
-          </p>
-          <div className="lg:col-span-9">
-            <h2 id="yerel-baslik" data-reveal="lines" className="display text-[clamp(2rem,5vw,4.6rem)]">
-              Afyonkarahisar&apos;da, şantiyeye yakın.
-            </h2>
-            <p className="mt-8 max-w-xl text-[1.05rem] leading-relaxed text-ink/80" data-reveal="fade">
-              Merkezimiz {site.address.district}, {site.address.street} adresinde. Kentin iklimini, yapı stokunu ve yerel süreçlerini bilerek çalışmak; hızlı
-              karar, kolay ulaşım ve yerinde takip demek.
-            </p>
-            <Link href="/iletisim" className="label u-link mt-8 inline-block text-ink">
-              Ofisimize yol tarifi →
-            </Link>
+      <section aria-labelledby="yerel-baslik" className="pb-[var(--section-y)]">
+        <div className="shell">
+          <SectionHead
+            id="yerel-baslik"
+            eyebrow="Yerel"
+            title="Afyonkarahisar'da, şantiyeye yakın."
+            lead={`Merkezimiz ${site.address.district}, ${site.address.street} adresinde. Kentin iklimini, yapı stokunu ve yerel süreçlerini bilerek çalışmak; hızlı karar, kolay ulaşım ve yerinde takip demek.`}
+            action={
+              <Link href="/iletisim" className="btn btn-secondary">
+                Ofisimize yol tarifi
+                <span aria-hidden="true" className="btn-arrow">
+                  →
+                </span>
+              </Link>
+            }
+          />
+          <div className="atmos mt-10 overflow-hidden border border-mist bg-linen pt-16 md:mt-14 md:pt-24">
+            <LivingSkyline mode="scroll" className="aspect-[1000/380] w-full md:aspect-[1600/360]" />
           </div>
-        </div>
-        <div className="mt-16">
-          <LivingSkyline mode="scroll" className="aspect-[1000/380] w-full md:aspect-[1600/360]" />
         </div>
       </section>
 

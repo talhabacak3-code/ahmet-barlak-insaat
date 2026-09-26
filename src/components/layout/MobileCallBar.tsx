@@ -28,16 +28,16 @@ export function MobileCallBar() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 grid border-t border-ink/20 bg-paper pb-[env(safe-area-inset-bottom)] transition-transform duration-500 md:hidden ${
+      className={`frost fixed inset-x-3 bottom-[max(12px,env(safe-area-inset-bottom))] z-40 grid gap-2 rounded-2xl p-2 shadow-nav transition-transform duration-500 md:hidden ${
         wa ? "grid-cols-2" : "grid-cols-1"
-      } ${hide ? "translate-y-full" : "translate-y-0"}`}
+      } ${hide ? "translate-y-[calc(100%+24px)]" : "translate-y-0"}`}
       aria-hidden={hide || undefined}
     >
-      <a href={site.phone.href} tabIndex={hide ? -1 : undefined} className="flex h-14 items-center justify-center gap-2 bg-brand font-medium text-paper">
+      <a href={site.phone.href} tabIndex={hide ? -1 : undefined} className="btn btn-dark justify-center">
         <PhoneIcon /> Hemen ara
       </a>
       {wa && (
-        <a href={wa} target="_blank" rel="noopener noreferrer" tabIndex={hide ? -1 : undefined} className="flex h-14 items-center justify-center gap-2 font-medium text-ink">
+        <a href={wa} target="_blank" rel="noopener noreferrer" tabIndex={hide ? -1 : undefined} className="btn btn-secondary justify-center bg-card">
           WhatsApp
         </a>
       )}

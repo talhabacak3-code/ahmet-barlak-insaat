@@ -1,21 +1,45 @@
 @import "tailwindcss";
 @import "lenis/dist/lenis.css";
 
+/*
+ * Tasarım sistemi: "kamp ateşi başında edebiyat dergisi" — sıcak beyaz zemin, 400 ağırlıklı serif başlıklar,
+ * sakin sans gövde, yeşilimsi gri kıl çizgiler, tek vurgu rengi. Vurgu rengi olarak logonun bordosu kullanılır.
+ * Kaynak: DESIGN.md (tokenlar birebir, yalnızca --color-brand = logo bordosu).
+ */
+
 /* ───────── Tokens ───────── */
 @theme inline {
-  --color-paper: #f2eee7;
-  --color-paper-2: #e8e2d7;
-  --color-ink: #191715;
-  --color-ink-2: #2b2825;
-  --color-muted: #5f5850;
+  /* Yüzeyler */
+  --color-paper: #fefffc; /* Parchment — sayfa zemini; koyu yüzeyde açık metin */
+  --color-card: #ffffff; /* Paper — kartlar, footer */
+  --color-linen: #f9faf7; /* Linen — form alanları, hafif yüzey */
+  --color-paper-2: #f9faf7;
+
+  /* Metin & çizgi */
+  --color-ink: #2c2c2c; /* Graphite — başlıklar, çizim hatları */
+  --color-ink-black: #171717;
+  --color-charcoal: #444141; /* gövde metni */
+  --color-muted: #646464; /* Ash — yardımcı metin */
+  --color-fog: #b4b8b4;
+  --color-mist: #dee2de; /* kıl çizgi kenarlık */
+  --color-twilight: #282834;
+  --color-dusk: #1f1f29; /* tek dolu buton, gece yüzeyi */
+  --color-dim: #a9abb3; /* koyu yüzeyde ikincil metin (solid) */
+
+  /* Tek vurgu — logo bordosu (DESIGN.md'deki Signal Blue'nun yerine) */
   --color-brand: #7a1e29;
   --color-brand-deep: #561520;
   --color-brand-soft: #d4aeb1;
-  --color-stone: #b8afa2;
 
-  --font-display: var(--font-archivo), "Arial Narrow", sans-serif;
-  --font-sans: var(--font-plex), system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-wordmark: var(--font-archivo), sans-serif;
+
+  --shadow-card: 0 1px 1px 0 rgb(0 0 0 / 0.08), 0 4px 5px 0 rgb(0 0 0 / 0.08);
+  --shadow-diagram: 0 1px 8px 0 rgb(0 0 0 / 0.05);
+  --shadow-nav: 0 2px 6px 0 rgb(0 0 0 / 0.15);
+  --shadow-atmos: 0 2px 2px 0 rgb(0 0 0 / 0.06), 0 0 0 5px rgb(0 0 0 / 0.04);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-3: cubic-bezier(0.65, 0, 0.35, 1);
@@ -24,11 +48,10 @@
 }
 
 :root {
-  --line: rgb(25 23 21 / 0.16);
-  --line-strong: rgb(25 23 21 / 0.4);
-  --gutter: clamp(16px, 4vw, 56px);
-  --header-h: 72px;
-  --section-y: clamp(96px, 13vw, 184px);
+  --line: #dee2de;
+  --gutter: clamp(16px, 4vw, 40px);
+  --header-h: 84px;
+  --section-y: clamp(72px, 9vw, 128px);
 }
 
 /* ───────── Base ───────── */
@@ -40,6 +63,9 @@ html {
 }
 body {
   font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   background: var(--color-paper);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
@@ -64,25 +90,24 @@ svg {
 /* ───────── Utilities ───────── */
 @utility shell {
   width: 100%;
-  max-width: 1520px;
+  max-width: calc(1200px + 2 * var(--gutter));
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
+/* Yalnızca logo yazısı (Archivo) için */
 @utility wdth-125 {
   font-variation-settings: "wdth" 125;
 }
 @utility wdth-112 {
   font-variation-settings: "wdth" 112;
 }
-@utility wdth-100 {
-  font-variation-settings: "wdth" 100;
-}
+/* Caption — 13px sans, orta ağırlık */
 @utility label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
   line-height: 1.3;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 @utility hairline {
   border-color: var(--line);
@@ -91,80 +116,167 @@ svg {
   padding-block: var(--section-y);
 }
 
-.display {
-  font-family: var(--font-display);
-  font-variation-settings: "wdth" 112;
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 0.94;
-}
+/* Bileşen sınıfları components katmanında: Tailwind yardımcı sınıfları (hidden, justify-*, bg-*) bunları ezebilir. */
+@layer components {
+  /* Serif başlık — her zaman 400, sıkı izleme, liga kapalı */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-feature-settings: "liga" 0;
+  }
+  .display em {
+    font-style: italic;
+  }
 
-/* Grid lines — paftadaki aks sistemi */
-.axis-grid {
-  background-image: linear-gradient(to right, var(--line) 1px, transparent 1px);
-  background-size: calc((100% - 1px) / 12) 100%;
-}
+  /* ───────── Bileşenler ───────── */
 
-/* Milimetrik çizim kâğıdı — logodaki bordo tonunda */
-.mm-grid {
-  background-color: var(--color-paper);
-  background-image:
-    linear-gradient(rgb(122 30 41 / 0.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(122 30 41 / 0.11) 1px, transparent 1px),
-    linear-gradient(rgb(122 30 41 / 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(122 30 41 / 0.045) 1px, transparent 1px);
-  background-size:
-    40px 40px,
-    40px 40px,
-    8px 8px,
-    8px 8px;
-  background-position: -1px -1px;
-}
+  /* Butonlar — 8px radius, kenarlık tabanlı; gölge yok */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 44px;
+    padding: 6px 8px 6px 16px;
+    border: 1px solid;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .btn-primary {
+    border-color: var(--color-brand);
+    color: var(--color-brand);
+    background: transparent;
+  }
+  .btn-primary:hover {
+    background: rgb(122 30 41 / 0.05);
+  }
+  .btn-secondary {
+    border-color: var(--color-twilight);
+    color: var(--color-twilight);
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background: var(--color-linen);
+  }
+  .btn-dark {
+    border-color: var(--color-twilight);
+    background: var(--color-dusk);
+    color: #ffffff;
+  }
+  .btn-dark:hover {
+    background: #2c2c3a;
+  }
+  /* Koyu yüzey üstünde */
+  .btn-light {
+    border-color: #5b5c69;
+    color: var(--color-paper);
+    background: transparent;
+  }
+  .btn-light:hover {
+    border-color: var(--color-paper);
+    background: rgb(255 255 255 / 0.06);
+  }
+  .btn-arrow {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    border: 1px solid currentColor;
+    border-radius: 9999px;
+    font-size: 12px;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .btn:hover .btn-arrow,
+  .group:hover .btn-arrow {
+    transform: translateX(2px);
+  }
 
-/* Hatch (tarama) — kesit dolgusu */
-.hatch {
-  background-image: repeating-linear-gradient(-45deg, var(--line) 0 1px, transparent 1px 9px);
-}
+  /* Beyaz içerik kartı — 12px, mist kenarlık */
+  .card {
+    background: var(--color-card);
+    border: 1px solid var(--color-mist);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+  }
+  /* Diyagram kartı — çizimlerin yumuşak çerçevesi */
+  .diagram-card {
+    background: rgb(255 255 255 / 0.82);
+    border: 1px solid var(--color-mist);
+    border-radius: 16px;
+    box-shadow: var(--shadow-diagram);
+  }
+  /* Atmosferik yüzey — rengin var olduğu tek an (24px) */
+  .atmos {
+    border-radius: 24px;
+    box-shadow: var(--shadow-atmos);
+  }
+  /* Buzlu cam — navigasyon hapı ve hero kartı */
+  .frost {
+    background: rgb(254 255 252 / 0.74);
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
+    backdrop-filter: blur(14px) saturate(1.15);
+    border: 1px solid rgb(255 255 255 / 0.8);
+  }
+  /* Form alanı — linen dolgu, yalnız alt çizgi */
+  .field {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--color-charcoal);
+    border-radius: 0;
+    background: var(--color-linen);
+    color: var(--color-charcoal);
+    padding: 22px 12px 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .field:focus {
+    border-bottom-color: var(--color-brand);
+  }
+  .field:focus-visible {
+    box-shadow: inset 0 -2px 0 var(--color-brand);
+  }
 
-/* Link underline that draws */
-.u-link {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.45s var(--ease-out-expo);
-}
-.u-link:hover,
-.u-link:focus-visible,
-.u-link[aria-current="page"] {
-  background-size: 100% 1px;
-}
+  /* Milimetrik çizim kâğıdı — mist tonunda */
+  .mm-grid {
+    background-color: var(--color-card);
+    background-image:
+      linear-gradient(#e6e9e6 1px, transparent 1px),
+      linear-gradient(90deg, #e6e9e6 1px, transparent 1px),
+      linear-gradient(#f3f4f2 1px, transparent 1px),
+      linear-gradient(90deg, #f3f4f2 1px, transparent 1px);
+    background-size:
+      40px 40px,
+      40px 40px,
+      8px 8px,
+      8px 8px;
+    background-position: -1px -1px;
+  }
 
-/* Crop marks */
-.crop {
-  position: relative;
-}
-.crop::before,
-.crop::after {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-  border-color: currentColor;
-  opacity: 0.5;
-}
-.crop::before {
-  top: -1px;
-  left: -1px;
-  border-top: 1px solid;
-  border-left: 1px solid;
-}
-.crop::after {
-  right: -1px;
-  bottom: -1px;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
+  /* Link alt çizgisi soldan çizilir */
+  .u-link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.45s var(--ease-out-expo);
+  }
+  .u-link:hover,
+  .u-link:focus-visible,
+  .u-link[aria-current="page"] {
+    background-size: 100% 1px;
+  }
 }
 
 /* ───────── Drawings ───────── */
@@ -298,14 +410,6 @@ svg {
   transform-box: fill-box;
   transform-origin: 0 50%;
   animation: wave 2.6s ease-in-out infinite;
-}
-@keyframes ring-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.motion .ring-spin {
-  animation: ring-spin 28s linear infinite;
 }
 
 /* Hero (CSS-only, runs before hydration) */
