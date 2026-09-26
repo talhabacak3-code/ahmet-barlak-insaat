@@ -4,8 +4,8 @@ import { Suspense } from "react";
 import { PageHero } from "@/components/sections/PageHero";
 import { ProjectRequestForm } from "@/components/contact/ProjectRequestForm";
 import { MapFacade } from "@/components/contact/MapFacade";
+import { MagneticButton } from "@/components/motion/MagneticButton";
 import { directionsHref, site, whatsappHref } from "@/content/site";
-import { SectionHead } from "@/components/ui/SectionHead";
 
 export const metadata: Metadata = pageMeta({
   title: "İletişim",
@@ -18,60 +18,55 @@ export default function IletisimPage() {
   return (
     <>
       <PageHero
+        sheet="05"
         eyebrow="İletişim"
-        lines={["Bir telefon,", <>bir <em className="text-brand">keşif,</em></>, "bir plan."]}
+        lines={["Bir telefon,", <>bir <em className="italic text-brand wdth-125">keşif,</em></>, "bir plan."]}
         lead="İlk görüşmede ihtiyacınızı dinliyor, gerekirse yerinde keşif için randevu planlıyoruz."
       />
 
-      <section aria-label="İletişim bilgileri ve talep formu" data-hide-callbar>
-        <div className="shell grid gap-4 pb-[var(--section-y)] lg:grid-cols-12">
-          <div className="grid content-start gap-4 lg:col-span-4">
-            <div className="card p-6">
+      <section aria-label="İletişim bilgileri ve talep formu" className="border-t hairline" data-hide-callbar>
+        <div className="shell grid gap-16 py-[var(--section-y)] lg:grid-cols-12 lg:gap-6">
+          <div className="grid content-start gap-12 lg:col-span-4">
+            <div>
               <p className="label text-muted">Telefon</p>
-              <a href={site.phone.href} className="display mt-2 block whitespace-nowrap text-[clamp(1.9rem,2.6vw,2.4rem)] text-ink transition-colors hover:text-brand">
+              <a href={site.phone.href} className="display mt-3 block whitespace-nowrap text-[clamp(2rem,3.2vw,3rem)] transition-colors hover:text-brand">
                 {site.phone.display}
-              </a>
-              <a href={site.phone.href} className="btn btn-dark mt-5 w-full">
-                Hemen ara
-                <span aria-hidden="true" className="btn-arrow">
-                  →
-                </span>
               </a>
             </div>
             {wa && (
-              <div className="card p-6">
+              <div>
                 <p className="label text-muted">WhatsApp</p>
-                <p className="mt-2 text-[15px] leading-[1.5] text-charcoal">Proje bilginizi yazılı iletmek isterseniz.</p>
-                <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-secondary mt-5 w-full">
-                  Mesaj gönderin
-                  <span aria-hidden="true" className="btn-arrow">
-                    ↗
-                  </span>
+                <a href={wa} target="_blank" rel="noopener noreferrer" className="u-link mt-3 inline-block text-lg">
+                  Mesaj gönderin ↗
                 </a>
               </div>
             )}
-            <div className="card p-6">
+            <div>
               <p className="label text-muted">Adres</p>
-              <address className="mt-2 text-[16px] not-italic leading-[1.5] text-charcoal">
+              <address className="mt-3 text-lg not-italic leading-relaxed">
                 {site.address.lines.map((l) => (
                   <span key={l} className="block">
                     {l}
                   </span>
                 ))}
               </address>
-              <a href={directionsHref} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-5 w-full">
-                Yol tarifi al
-                <span aria-hidden="true" className="btn-arrow">
-                  ↗
-                </span>
+              <a href={directionsHref} target="_blank" rel="noopener noreferrer" className="label u-link mt-4 inline-block text-brand">
+                Yol tarifi al ↗
               </a>
             </div>
+            <MagneticButton
+              href={site.phone.href}
+              aria-label="Hemen ara"
+              className="hidden h-36 w-36 items-center justify-center rounded-full bg-brand text-paper transition-colors hover:bg-ink lg:flex"
+            >
+              <span className="label">Hemen</span>
+              <span className="display text-2xl">Ara</span>
+            </MagneticButton>
           </div>
 
-          <div className="card p-6 sm:p-10 lg:col-span-8">
-            <p className="label text-muted">Proje talebi</p>
-            <h2 className="display mt-3 text-[clamp(2rem,3.2vw,2.75rem)] text-ink">Birkaç bilgi bırakın.</h2>
-            <p className="mb-10 mt-3 max-w-lg text-[17px] leading-[1.55] text-charcoal">Sizi arayarak detayları konuşalım; gerekirse yerinde keşif için randevu planlayalım.</p>
+          <div className="lg:col-span-7 lg:col-start-6">
+            <h2 className="display text-[clamp(2rem,3.6vw,3.2rem)]">Proje talebi</h2>
+            <p className="mb-10 mt-4 max-w-lg leading-relaxed text-muted">Birkaç bilgi bırakın, sizi arayarak detayları konuşalım.</p>
             <Suspense fallback={null}>
               <ProjectRequestForm />
             </Suspense>
@@ -81,7 +76,12 @@ export default function IletisimPage() {
 
       <section aria-labelledby="konum-baslik" className="pb-[var(--section-y)]">
         <div className="shell">
-          <SectionHead id="konum-baslik" eyebrow={site.coordinates} title="Konum" className="mb-8" />
+          <div className="mb-8 flex items-end justify-between gap-6">
+            <h2 id="konum-baslik" className="display text-[clamp(2rem,3.6vw,3.2rem)]">
+              Konum
+            </h2>
+            <p className="label text-muted">{site.coordinates}</p>
+          </div>
           <MapFacade />
         </div>
       </section>

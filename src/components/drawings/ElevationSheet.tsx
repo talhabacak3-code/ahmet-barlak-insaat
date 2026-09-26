@@ -4,7 +4,7 @@ import type { Drawing } from "@/content/site";
 export function ElevationSheet({ drawing, label, className = "" }: { drawing: Drawing; label?: string; className?: string }) {
   const { floors, bays, roof, shopfront, scaffold } = drawing;
   const GROUND = 250;
-  const bayW = Math.min(58, 240 / bays);
+  const bayW = Math.min(58, 280 / bays);
   const fh = Math.min(36, 170 / floors);
   const W = bays * bayW;
   const H = floors * fh;

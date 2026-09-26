@@ -72,67 +72,55 @@ export function Header() {
 
   return (
     <>
-      {/* Buzlu cam navigasyon hapı */}
       <header
-        className={`fixed inset-x-0 top-0 ${open ? "z-[60]" : "z-50"} pt-3 transition-transform duration-500 ease-[var(--ease-out-expo)] md:pt-4 ${
-          hidden && !open ? "-translate-y-[130%]" : "translate-y-0"
-        }`}
+        className={`fixed inset-x-0 top-0 ${open ? "z-[60]" : "z-50"} transition-[transform,background-color,border-color] duration-500 ease-[var(--ease-out-expo)] ${
+          hidden && !open ? "-translate-y-full" : "translate-y-0"
+        } ${open ? "border-b border-transparent bg-transparent" : scrolled ? "border-b hairline bg-paper" : "border-b border-transparent bg-paper/0"}`}
       >
-        <div className="shell">
-          <div
-            className={`frost mx-auto flex h-[60px] max-w-[1100px] items-center justify-between gap-4 rounded-full pl-5 pr-2 transition-shadow duration-500 ${
-              scrolled || open ? "shadow-nav" : ""
-            }`}
-          >
-            <Link href="/" aria-label={`${site.name} — Ana sayfa`} className="-my-2 rounded-full py-2">
-              <Logo />
-            </Link>
+        <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6">
+          <Link href="/" aria-label={`${site.name} — Ana sayfa`} className="relative z-[60] -m-2 p-2">
+            <Logo tone={open ? "light" : "dark"} />
+          </Link>
 
-            <nav aria-label="Ana menü" className="hidden lg:block">
-              <ul className="flex items-center gap-1">
-                {site.nav.map((item) => {
-                  const active = pathname.startsWith(item.href);
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        aria-current={active ? "page" : undefined}
-                        className={`block rounded-full px-4 py-2 text-[15px] font-medium transition-colors ${
-                          active ? "bg-linen text-ink" : "text-charcoal hover:bg-linen hover:text-ink"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
+          <nav aria-label="Ana menü" className="hidden lg:block">
+            <ul className="flex items-center gap-9">
+              {site.nav.map((item) => {
+                const active = pathname.startsWith(item.href);
+                return (
+                  <li key={item.href}>
+                    <Link href={item.href} aria-current={active ? "page" : undefined} className="u-link group flex items-baseline gap-1.5 py-1 text-[0.95rem] font-medium">
+                      <span className="label text-[0.62rem] text-muted transition-colors group-hover:text-brand">{item.sheet}</span>
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
-            <div className="flex items-center gap-1">
-              <a href={site.phone.href} className={`btn btn-primary hidden rounded-full md:inline-flex ${open ? "invisible" : ""}`}>
-                <span>
-                  <span className="text-muted">Ara</span> {site.phone.display}
-                </span>
-                <span aria-hidden="true" className="btn-arrow">
-                  →
-                </span>
-              </a>
-              <button
-                ref={toggleRef}
-                type="button"
-                onClick={() => setOpen((v) => !v)}
-                aria-expanded={open}
-                aria-controls="mobil-menu"
-                className="flex h-11 items-center gap-3 rounded-full px-4 text-[15px] font-medium text-ink transition-colors hover:bg-linen lg:hidden"
-              >
-                {open ? "Kapat" : "Menü"}
-                <span aria-hidden="true" className="relative block h-2.5 w-5">
-                  <span className={`absolute left-0 block h-px w-5 bg-current transition-transform duration-500 ${open ? "top-1 rotate-45" : "top-0"}`} />
-                  <span className={`absolute left-0 block h-px w-5 bg-current transition-transform duration-500 ${open ? "top-1 -rotate-45" : "top-2.5"}`} />
-                </span>
-              </button>
-            </div>
+          <div className="flex items-center gap-4">
+            <a href={site.phone.href} className={`group hidden items-center gap-3 md:flex ${open ? "invisible" : ""}`}>
+              <span className="label text-right text-muted">
+                Bizi
+                <br />
+                arayın
+              </span>
+              <span className="font-display text-lg font-bold tracking-tight wdth-112 transition-colors group-hover:text-brand">{site.phone.display}</span>
+            </a>
+            <button
+              ref={toggleRef}
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobil-menu"
+              className={`relative z-[60] -mr-2 flex h-11 items-center gap-3 px-2 lg:hidden ${open ? "text-paper" : "text-ink"}`}
+            >
+              <span className="label">{open ? "Kapat" : "Menü"}</span>
+              <span aria-hidden="true" className="relative block h-3 w-6">
+                <span className={`absolute left-0 block h-px w-6 bg-current transition-transform duration-500 ${open ? "top-1.5 rotate-45" : "top-0"}`} />
+                <span className={`absolute left-0 block h-px w-6 bg-current transition-transform duration-500 ${open ? "top-1.5 -rotate-45" : "top-3"}`} />
+              </span>
+            </button>
           </div>
         </div>
       </header>
@@ -144,43 +132,37 @@ export function Header() {
         aria-modal="true"
         aria-label="Menü"
         hidden={!open}
-        className="fixed inset-0 z-[55] overflow-y-auto bg-paper text-ink lg:hidden"
+        className="on-dark fixed inset-0 z-[55] overflow-y-auto bg-ink text-paper lg:hidden"
       >
-        <div className="shell flex min-h-full flex-col pb-10 pt-[calc(var(--header-h)+24px)]">
+        <div className="shell flex min-h-full flex-col pb-10 pt-[calc(var(--header-h)+32px)]">
           <nav aria-label="Mobil menü">
-            <ul className="border-t hairline">
-              {[{ href: "/", label: "Ana Sayfa" }, ...site.nav].map((item) => (
-                <li key={item.href} className="border-b hairline">
-                  <Link
-                    href={item.href}
-                    aria-current={(item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)) ? "page" : undefined}
-                    className="flex items-center justify-between py-5"
-                  >
-                    <span className="display text-[40px]">{item.label}</span>
-                    <span aria-hidden="true" className="btn-arrow text-muted">
-                      →
-                    </span>
+            <ul className="border-t border-paper/15">
+              <li className="border-b border-paper/15">
+                <Link href="/" className="flex items-baseline gap-4 py-5">
+                  <span className="label text-brand-soft">01</span>
+                  <span className="display text-[clamp(2.2rem,11vw,3.5rem)]">Ana Sayfa</span>
+                </Link>
+              </li>
+              {site.nav.map((item) => (
+                <li key={item.href} className="border-b border-paper/15">
+                  <Link href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined} className="flex items-baseline gap-4 py-5">
+                    <span className="label text-brand-soft">{item.sheet}</span>
+                    <span className="display text-[clamp(2.2rem,11vw,3.5rem)]">{item.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
-          <div className="mt-auto grid gap-3 pt-12">
-            <a href={site.phone.href} className="btn btn-dark">
-              <span>Hemen ara · {site.phone.display}</span>
-              <span aria-hidden="true" className="btn-arrow">
-                →
-              </span>
+          <div className="mt-auto grid gap-6 pt-12">
+            <a href={site.phone.href} className="display text-4xl text-paper">
+              {site.phone.display}
             </a>
             {wa && (
-              <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-                <span>WhatsApp&apos;tan yazın</span>
-                <span aria-hidden="true" className="btn-arrow">
-                  ↗
-                </span>
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="label u-link w-fit text-brand-soft">
+                WhatsApp&apos;tan yazın ↗
               </a>
             )}
-            <address className="mt-4 text-sm not-italic leading-relaxed text-muted">
+            <address className="not-italic text-sm leading-relaxed text-paper/70">
               {site.address.lines.map((l) => (
                 <span key={l} className="block">
                   {l}

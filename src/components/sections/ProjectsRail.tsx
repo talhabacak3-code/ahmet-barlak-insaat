@@ -50,25 +50,27 @@ export function ProjectsRail() {
       <div className="lg:motion-safe:sticky lg:motion-safe:top-0 lg:motion-safe:flex lg:motion-safe:h-svh lg:motion-safe:flex-col lg:motion-safe:justify-center lg:motion-safe:overflow-hidden">
         <div
           ref={track}
-          className="flex snap-x snap-mandatory scroll-px-[var(--gutter)] gap-4 overflow-x-auto py-[var(--section-y)] pl-[max(var(--gutter),calc((100vw-1200px)/2))] pr-[var(--gutter)] [scrollbar-width:none] lg:motion-safe:w-max lg:motion-safe:snap-none lg:motion-safe:gap-6 lg:motion-safe:overflow-visible lg:motion-safe:py-0 [&::-webkit-scrollbar]:hidden"
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-[var(--gutter)] py-[var(--section-y)] [scrollbar-width:none] lg:motion-safe:w-max lg:motion-safe:snap-none lg:motion-safe:gap-8 lg:motion-safe:overflow-visible lg:motion-safe:py-0 [&::-webkit-scrollbar]:hidden"
           tabIndex={0}
           role="region"
           aria-label="Projeler — yatay liste"
         >
-          <div className="flex w-[82vw] shrink-0 snap-start flex-col justify-between gap-10 sm:w-[60vw] lg:w-[min(30vw,380px)] lg:pr-10">
+          <div className="flex w-[82vw] shrink-0 snap-start flex-col justify-between gap-10 sm:w-[60vw] lg:w-[34vw] lg:pr-12">
             <div>
-              <p className="label text-muted">Projeler</p>
-              <h2 id="projeler-baslik" className="display mt-4 text-[clamp(2rem,3.6vw,3rem)] text-ink">
+              <p className="label text-brand">
+                <span aria-hidden="true">§ </span>Projeler
+              </p>
+              <h2 id="projeler-baslik" className="display mt-6 text-[clamp(2.4rem,5.4vw,5rem)]">
                 Her proje bir pafta.
               </h2>
             </div>
             <div className="grid gap-6">
-              <p className="max-w-sm text-[17px] leading-[1.55] text-charcoal">
+              <p className="max-w-sm leading-relaxed text-muted">
                 Tamamlanan ve devam eden işlerimizi; konumu, türü ve durumuyla birlikte teknik bir kayıt olarak sunuyoruz.
               </p>
-              <Link href="/projeler" className="btn btn-secondary w-fit">
-                Tüm projeler
-                <span aria-hidden="true" className="btn-arrow">
+              <Link href="/projeler" className="group flex h-14 w-fit items-center gap-6 border border-ink/80 px-6 transition-colors hover:border-brand hover:text-brand">
+                <span className="font-medium">Tüm projeler</span>
+                <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
                   →
                 </span>
               </Link>
@@ -79,7 +81,7 @@ export function ProjectsRail() {
             <Link
               key={p.slug}
               href="/projeler"
-              className="block w-[82vw] shrink-0 snap-start rounded-xl sm:w-[56vw] lg:w-[min(36vw,520px)]"
+              className="block w-[82vw] shrink-0 snap-start sm:w-[56vw] lg:w-[min(38vw,560px)]"
               aria-label={`${p.title} — ${p.type}, ${p.location}`}
             >
               <ProjectCard project={p} index={i} />

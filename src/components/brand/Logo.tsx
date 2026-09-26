@@ -33,9 +33,9 @@ export function Logo({ tone = "dark", compact = false }: { tone?: "dark" | "ligh
     <span className="flex items-center gap-3">
       <LogoMark className={`h-8 w-auto shrink-0 ${accent}`} />
       {!compact && (
-        <span className="flex shrink-0 flex-col whitespace-nowrap leading-none">
-          <span className={`font-wordmark text-[1.18rem] font-extrabold italic tracking-[-0.01em] wdth-125 ${ink}`}>{site.wordmark}</span>
-          <span className={`mt-[3px] font-wordmark text-[0.64rem] font-semibold italic tracking-[0.02em] wdth-112 ${accent}`}>{site.tagline}</span>
+        <span className="flex flex-col leading-none">
+          <span className={`font-display text-[1.18rem] font-extrabold italic tracking-[-0.01em] wdth-125 ${ink}`}>{site.wordmark}</span>
+          <span className={`mt-[3px] font-display text-[0.64rem] font-semibold italic tracking-[0.02em] wdth-112 ${accent}`}>{site.tagline}</span>
         </span>
       )}
     </span>

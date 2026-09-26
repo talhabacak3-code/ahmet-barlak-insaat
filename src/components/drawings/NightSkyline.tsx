@@ -53,7 +53,7 @@ export function NightSkyline({ className = "" }: { className?: string }) {
 
       {/* kale */}
       <g className="text-paper/45">
-        <path className="drw drw-bold dl" pathLength={1} style={{ ...v({ delay: 0.1, dur: 1.8 }), fill: "var(--color-dusk)" }} d={CASTLE} />
+        <path className="drw drw-bold dl" pathLength={1} style={{ ...v({ delay: 0.1, dur: 1.8 }), fill: "var(--color-ink)" }} d={CASTLE} />
         <path className="drw dl" pathLength={1} style={v({ delay: 0.9, dur: 1 })} d={crenellation(252, 336, 68, 54)} />
         <path className="drw dl" pathLength={1} style={v({ delay: 1.1, dur: 0.6 })} d="M254 54V40h16v14 M318 54V44h14v10 M262 40V12" />
         <g className="df flag-wave" style={v({ delay: 1.4 })}>
@@ -67,7 +67,7 @@ export function NightSkyline({ className = "" }: { className?: string }) {
       {/* kent */}
       <g className="text-paper/30">
         {CITY.map(([x, w, top], i) => (
-          <path key={x} className="drw dl" pathLength={1} style={{ ...v({ delay: 0.4 + i * 0.05, dur: 1 }), fill: "var(--color-dusk)" }} d={`M${x} ${GROUND}V${top}H${x + w}V${GROUND}`} />
+          <path key={x} className="drw dl" pathLength={1} style={{ ...v({ delay: 0.4 + i * 0.05, dur: 1 }), fill: "var(--color-ink)" }} d={`M${x} ${GROUND}V${top}H${x + w}V${GROUND}`} />
         ))}
       </g>
       <g className="text-paper">
@@ -91,7 +91,7 @@ export function NightSkyline({ className = "" }: { className?: string }) {
 
       {/* tamamlanan yapı */}
       <g className="text-brand-soft">
-        <path className="drw drw-bold dl" pathLength={1} style={{ ...v({ delay: 0.6, dur: 1.2 }), fill: "var(--color-dusk)" }} d={`M${HB.x} ${GROUND}V${HB.top}H${HB.x + HB.w}V${GROUND}`} />
+        <path className="drw drw-bold dl" pathLength={1} style={{ ...v({ delay: 0.6, dur: 1.2 }), fill: "var(--color-ink)" }} d={`M${HB.x} ${GROUND}V${HB.top}H${HB.x + HB.w}V${GROUND}`} />
         <path className="drw drw-thin dl" pathLength={1} opacity="0.35" style={v({ delay: 1, dur: 1 })} d={Array.from({ length: 7 }, (_, i) => `M${HB.x} ${GROUND - (i + 1) * 28}H${HB.x + HB.w}`).join("")} />
         {hbWins.map((w, i) => (
           <rect key={i} className="wl" x={w.x} y={w.y - 3} width={w.w} height="6" fill="currentColor" style={v({ o: "0.9", delay: 2.6 + (GROUND - w.y) * 0.004 })} />

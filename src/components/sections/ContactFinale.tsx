@@ -1,61 +1,105 @@
+import { MagneticButton } from "@/components/motion/MagneticButton";
 import { NightSkyline } from "@/components/drawings/NightSkyline";
 import { directionsHref, site, whatsappHref } from "@/content/site";
 
-/** Her sayfanın kapanışı: hero'daki kentin gece hâli (atmosferik kart) + doğrudan iletişim eylemleri. */
+/** Her sayfanın kapanışı: hero'daki kentin gece hâli + doğrudan iletişim eylemleri. */
 export function ContactFinale({ heading = "Projenizi konuşalım." }: { heading?: string }) {
   const wa = whatsappHref("Merhaba, bir proje hakkında görüşmek istiyorum.");
+  const [first, ...rest] = site.phone.display.split(" ");
 
   const actions = [
-    { title: "Hemen arayın", sub: site.phone.display, href: site.phone.href, external: false },
-    ...(wa ? [{ title: "WhatsApp'tan yazın", sub: "Proje bilginizi iletin", href: wa, external: true }] : []),
-    { title: "Yol tarifi alın", sub: `${site.address.district}, ${site.address.street}`, href: directionsHref, external: true },
+    { label: "Telefon", title: "Hemen arayın", sub: site.phone.display, href: site.phone.href, external: false },
+    ...(wa ? [{ label: "WhatsApp", title: "Mesaj yazın", sub: "Proje bilginizi iletin", href: wa, external: true }] : []),
+    { label: "Ofis", title: "Yol tarifi alın", sub: `${site.address.district}, ${site.address.street}`, href: directionsHref, external: true },
   ];
 
   return (
-    <section aria-labelledby="final-baslik" className="pb-[var(--section-y)]" data-hide-callbar>
-      <div className="shell">
-        <div className="on-dark atmos relative overflow-hidden bg-dusk text-paper">
-          <div className="relative z-10 grid gap-12 px-6 pt-14 sm:px-12 sm:pt-20 lg:grid-cols-12 lg:gap-10 lg:px-20 lg:pt-24">
-            <div className="lg:col-span-7">
-              <p className="label text-dim">İletişim</p>
-              <h2 id="final-baslik" data-reveal="lines" className="display mt-4 text-[clamp(2rem,3.6vw,3rem)] text-paper">
-                {heading}
-              </h2>
-              <p data-reveal="fade" className="mt-5 max-w-md text-[17px] leading-[1.55] text-dim">
-                Keşif, fiyat ya da henüz yalnızca bir fikir. İlk görüşme bir telefon uzaklığında.
-              </p>
-              <a href={site.phone.href} className="group mt-10 inline-block" aria-label={`Telefon: ${site.phone.display}`}>
-                <span className="label block text-dim">Doğrudan hat</span>
-                <span className="display mt-2 block whitespace-nowrap text-[clamp(2.4rem,5.4vw,4.25rem)] tracking-[-0.03em] text-paper transition-colors duration-300 group-hover:text-brand-soft">
-                  {site.phone.display}
+    <section aria-labelledby="final-baslik" className="on-dark relative overflow-hidden bg-ink text-paper" data-hide-callbar>
+      <div className="shell pt-[var(--section-y)]">
+        <div className="grid gap-6 lg:grid-cols-12">
+          <p className="label text-brand-soft lg:col-span-3">
+            <span aria-hidden="true">§ </span>İletişim
+          </p>
+          <div className="lg:col-span-9">
+            <h2 id="final-baslik" data-reveal="lines" className="display text-[clamp(2.4rem,6vw,5.6rem)]">
+              {heading}
+            </h2>
+            <p data-reveal="fade" className="mt-6 max-w-xl text-[1.08rem] leading-relaxed text-paper/60">
+              Keşif, fiyat ya da henüz yalnızca bir fikir. İlk görüşme bir telefon uzaklığında.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-12 lg:mt-24 lg:flex-row lg:items-center lg:justify-between">
+          <a href={site.phone.href} className="group block w-fit" aria-label={`Telefon: ${site.phone.display}`}>
+            {/* ölçü çizgisi — numaranın genişliği kadar */}
+            <span aria-hidden="true" className="label flex items-center gap-3 text-paper/40">
+              <span className="h-3 w-px bg-current" />
+              <span className="h-px flex-1 bg-current" />
+              <span>Doğrudan hat</span>
+              <span className="h-px flex-1 bg-current" />
+              <span className="h-3 w-px bg-current" />
+            </span>
+            <span className="display mt-4 block whitespace-nowrap text-[clamp(3rem,14vw,12rem)] leading-[0.9] lg:text-[clamp(3rem,9.4vw,10.5rem)]">
+              <span className="block text-paper/35 transition-colors duration-500 group-hover:text-brand-soft/70">{first}</span>
+              <span className="block transition-colors duration-500 group-hover:text-brand-soft">{rest.join(" ")}</span>
+            </span>
+          </a>
+
+          {/* Dönen halka + manyetik Ara butonu */}
+          <div className="relative grid size-44 shrink-0 place-items-center self-start md:size-56 lg:self-auto">
+            <svg viewBox="0 0 200 200" aria-hidden="true" className="ring-spin absolute inset-0 text-paper/45">
+              <defs>
+                <path id="cta-ring" d="M100 100m-86 0a86 86 0 1 1 172 0a86 86 0 1 1-172 0" />
+              </defs>
+              <text fill="currentColor" className="font-mono" style={{ fontSize: 10.5, letterSpacing: "0.12em" }}>
+                <textPath href="#cta-ring" textLength="536" lengthAdjust="spacing">
+                  HEMEN ARA · {site.phone.display} · HEMEN ARA · {site.phone.display} ·
+                </textPath>
+              </text>
+            </svg>
+            <MagneticButton
+              href={site.phone.href}
+              aria-label="Hemen ara"
+              className="flex size-28 items-center justify-center rounded-full bg-brand text-paper transition-colors duration-500 hover:bg-paper hover:text-brand md:size-36"
+            >
+              <span className="label">Hemen</span>
+              <span className="display text-2xl md:text-3xl">Ara</span>
+            </MagneticButton>
+          </div>
+        </div>
+
+        <ul className={`mt-16 grid border-y border-paper/15 lg:mt-24 ${actions.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`} data-reveal="fade" data-stagger>
+          {actions.map((a, i) => (
+            <li key={a.label} className="border-b border-paper/15 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
+              <a
+                href={a.href}
+                {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className={`group relative flex h-full flex-col justify-between gap-5 overflow-hidden px-1 py-6 md:gap-10 md:px-8 md:py-9 ${i === 0 ? "md:pl-0" : ""}`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand-soft transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
+                />
+                <span className="flex items-center justify-between">
+                  <span className="label text-brand-soft">
+                    {String(i + 1).padStart(2, "0")} — {a.label}
+                  </span>
+                  <span aria-hidden="true" className="text-lg text-paper/60 transition-[transform,color] duration-500 group-hover:-rotate-45 group-hover:text-paper">
+                    →
+                  </span>
+                </span>
+                <span>
+                  <span className="display block text-[clamp(1.6rem,2.4vw,2.2rem)]">{a.title}</span>
+                  <span className="mt-2 block text-sm text-paper/55">{a.sub}</span>
                 </span>
               </a>
-            </div>
-
-            <ul className="grid content-end gap-3 lg:col-span-5" data-reveal="fade" data-stagger>
-              {actions.map((a) => (
-                <li key={a.title}>
-                  <a
-                    href={a.href}
-                    {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="group flex items-center justify-between gap-4 rounded-xl border border-[#3a3a47] bg-[#262631] px-5 py-4 transition-colors duration-300 hover:border-[#6a6b78] hover:bg-[#2c2c38]"
-                  >
-                    <span>
-                      <span className="block text-[16px] font-medium text-paper">{a.title}</span>
-                      <span className="mt-0.5 block text-[14px] text-dim">{a.sub}</span>
-                    </span>
-                    <span aria-hidden="true" className="btn-arrow text-dim transition-colors group-hover:text-paper">
-                      {a.external ? "↗" : "→"}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <NightSkyline className="mt-12 aspect-[1000/380] w-full md:aspect-[1600/360]" />
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
+
+      <NightSkyline className="mt-6 aspect-[1000/380] w-full md:aspect-[1600/360]" />
     </section>
   );
 }
