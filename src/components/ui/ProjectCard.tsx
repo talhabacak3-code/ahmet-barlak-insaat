@@ -24,7 +24,7 @@ export function ProjectCard({ project, index, sizes = "(min-width: 1024px) 40vw,
       </div>
       <div className="grid grid-cols-[auto_1fr] text-sm">
         <span className="label flex items-center border-r border-ink/25 px-4 text-brand">{String(index + 1).padStart(2, "0")}</span>
-        <h3 className="display px-4 py-4 text-[1.35rem] wdth-100">{project.title}</h3>
+        <h3 className="display px-4 py-4 text-[1.5rem]">{project.title}</h3>
       </div>
       <dl className="mt-auto grid grid-cols-3 border-t border-ink/25 text-[0.8rem]">
         {[

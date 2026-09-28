@@ -20,7 +20,7 @@ export default function IletisimPage() {
       <PageHero
         sheet="05"
         eyebrow="İletişim"
-        lines={["Bir telefon,", <>bir <em className="italic text-brand wdth-125">keşif,</em></>, "bir plan."]}
+        lines={["Bir telefon,", <>bir <em className="italic text-brand">keşif,</em></>, "bir plan."]}
         lead="İlk görüşmede ihtiyacınızı dinliyor, gerekirse yerinde keşif için randevu planlıyoruz."
       />
 

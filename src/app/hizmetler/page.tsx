@@ -19,7 +19,7 @@ export default function HizmetlerPage() {
       <PageHero
         sheet="03"
         eyebrow="Hizmetler"
-        lines={["Keşiften", <em key="t" className="italic text-brand wdth-125">teslime,</em>, "tek masa."]}
+        lines={["Keşiften", <em key="t" className="italic text-brand">teslime,</em>, "tek masa."]}
         lead="Her hizmet, aynı mühendislik disipliniyle ve aynı ekip tarafından yönetilir. Kapsamı projenize göre birlikte belirleriz."
       />
 

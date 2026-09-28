@@ -14,7 +14,7 @@ export function Manifesto() {
         </div>
 
         <div className="lg:col-span-9">
-          <p data-reveal="words" className="font-display text-[clamp(1.7rem,3.6vw,3.4rem)] font-semibold leading-[1.12] tracking-[-0.02em] wdth-100">
+          <p data-reveal="words" className="font-display text-[clamp(1.7rem,3.6vw,3.4rem)] font-normal leading-[1.18] tracking-[-0.02em]">
             Bir yapının ömrü, kâğıda çizilen ilk çizginin doğruluğuna bağlıdır. {site.shortName} &amp; Mühendislik olarak Afyonkarahisar&apos;da her projeye oradan
             başlıyoruz: önce yeri tanıyor, sonra hesabı kuruyor, en son inşa ediyoruz.
           </p>

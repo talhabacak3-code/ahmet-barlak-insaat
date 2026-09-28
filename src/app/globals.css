@@ -13,9 +13,12 @@
   --color-brand-soft: #d4aeb1;
   --color-stone: #b8afa2;
 
-  --font-display: var(--font-archivo), "Arial Narrow", sans-serif;
-  --font-sans: var(--font-plex), system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  /* DESIGN.md fontları: ppmondwest → Fraunces (başlık), af → Geist (gövde & arayüz) */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Yalnızca logo yazısı (orijinal logodaki geniş italik) */
+  --font-wordmark: var(--font-archivo), sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-3: cubic-bezier(0.65, 0, 0.35, 1);
@@ -78,7 +81,8 @@ svg {
   font-variation-settings: "wdth" 100;
 }
 @utility label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 500;
   font-size: 0.72rem;
   line-height: 1.3;
   letter-spacing: 0.08em;
@@ -91,12 +95,13 @@ svg {
   padding-block: var(--section-y);
 }
 
+/* Serif başlık — DESIGN.md: her zaman 400, sıkı izleme, liga kapalı */
 .display {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 112;
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 0.94;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-feature-settings: "liga" 0;
 }
 
 /* Grid lines — paftadaki aks sistemi */

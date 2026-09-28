@@ -105,7 +105,7 @@ export function Header() {
                 <br />
                 arayın
               </span>
-              <span className="font-display text-lg font-bold tracking-tight wdth-112 transition-colors group-hover:text-brand">{site.phone.display}</span>
+              <span className="text-[1.05rem] font-medium tracking-tight transition-colors group-hover:text-brand">{site.phone.display}</span>
             </a>
             <button
               ref={toggleRef}

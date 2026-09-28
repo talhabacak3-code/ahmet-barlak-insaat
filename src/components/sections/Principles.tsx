@@ -30,7 +30,7 @@ export function Principles({ heading = "Nasıl çalışırız?" }: { heading?: s
             >
               <div className="flex items-baseline justify-between gap-6">
                 <h3 className="display text-[clamp(1.8rem,3vw,2.6rem)]">{p.title}</h3>
-                <span className="font-display text-5xl font-extrabold italic text-paper/25 wdth-125" aria-hidden="true">
+                <span className="font-display text-5xl italic text-paper/25" aria-hidden="true">
                   {i + 1}
                 </span>
               </div>

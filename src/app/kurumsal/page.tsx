@@ -22,7 +22,7 @@ export default function KurumsalPage() {
         lines={[
           "Hesapla başlayan,",
           <>
-            <em className="italic text-brand wdth-125">yerinde</em> yürüyen
+            <em className="italic text-brand">yerinde</em> yürüyen
           </>,
           "yapılar.",
         ]}

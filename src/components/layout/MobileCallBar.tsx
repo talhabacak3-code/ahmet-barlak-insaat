@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { site, whatsappHref } from "@/content/site";
+import { WhatsAppIcon } from "@/components/brand/WhatsAppIcon";
 
 /** Mobilde başparmak bölgesinde kalıcı arama çubuğu. İletişim bloğu görünürken gizlenir. */
 export function MobileCallBar() {
@@ -38,7 +39,7 @@ export function MobileCallBar() {
       </a>
       {wa && (
         <a href={wa} target="_blank" rel="noopener noreferrer" tabIndex={hide ? -1 : undefined} className="flex h-14 items-center justify-center gap-2 font-medium text-ink">
-          WhatsApp
+          <WhatsAppIcon className="size-5 text-[#25D366]" /> WhatsApp
         </a>
       )}
     </div>

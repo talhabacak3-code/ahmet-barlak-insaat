@@ -9,6 +9,8 @@ type Props = {
   className?: string;
   strength?: number;
   "aria-label"?: string;
+  target?: string;
+  rel?: string;
 };
 
 /** İmleci hafifçe takip eden dairesel CTA. Yalnızca hassas işaretçili cihazlarda aktif. */

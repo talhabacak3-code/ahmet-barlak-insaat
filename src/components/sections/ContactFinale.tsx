@@ -1,5 +1,6 @@
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { NightSkyline } from "@/components/drawings/NightSkyline";
+import { WhatsAppIcon } from "@/components/brand/WhatsAppIcon";
 import { directionsHref, site, whatsappHref } from "@/content/site";
 
 /** Her sayfanın kapanışı: hero'daki kentin gece hâli + doğrudan iletişim eylemleri. */
@@ -40,14 +41,15 @@ export function ContactFinale({ heading = "Projenizi konuşalım." }: { heading?
               <span className="h-px flex-1 bg-current" />
               <span className="h-3 w-px bg-current" />
             </span>
-            <span className="display mt-4 block whitespace-nowrap text-[clamp(3rem,14vw,12rem)] leading-[0.9] lg:text-[clamp(3rem,9.4vw,10.5rem)]">
-              <span className="block text-paper/35 transition-colors duration-500 group-hover:text-brand-soft/70">{first}</span>
-              <span className="block transition-colors duration-500 group-hover:text-brand-soft">{rest.join(" ")}</span>
+            <span className="display mt-4 block whitespace-nowrap text-[clamp(2.2rem,9vw,4rem)] leading-none lg:text-[clamp(3rem,5vw,5.25rem)]">
+              <span className="text-paper/40 transition-colors duration-500 group-hover:text-brand-soft/70">{first}</span>{" "}
+              <span className="transition-colors duration-500 group-hover:text-brand-soft">{rest.join(" ")}</span>
             </span>
           </a>
 
+          <div className="flex items-center gap-5 self-start md:gap-8 lg:self-auto">
           {/* Dönen halka + manyetik Ara butonu */}
-          <div className="relative grid size-44 shrink-0 place-items-center self-start md:size-56 lg:self-auto">
+          <div className="relative grid size-44 shrink-0 place-items-center md:size-56">
             <svg viewBox="0 0 200 200" aria-hidden="true" className="ring-spin absolute inset-0 text-paper/45">
               <defs>
                 <path id="cta-ring" d="M100 100m-86 0a86 86 0 1 1 172 0a86 86 0 1 1-172 0" />
@@ -66,6 +68,23 @@ export function ContactFinale({ heading = "Projenizi konuşalım." }: { heading?
               <span className="label">Hemen</span>
               <span className="display text-2xl md:text-3xl">Ara</span>
             </MagneticButton>
+          </div>
+
+          {/* WhatsApp — tanınır yeşil daire */}
+          {wa && (
+            <div className="flex flex-col items-center gap-3">
+              <MagneticButton
+                href={wa}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp'tan yazın"
+                className="flex size-24 items-center justify-center rounded-full bg-[#25D366] text-white transition-colors duration-500 hover:bg-[#1ebe5a] md:size-28"
+              >
+                <WhatsAppIcon className="size-11 md:size-12" />
+              </MagneticButton>
+              <span className="label text-paper/60">WhatsApp</span>
+            </div>
+          )}
           </div>
         </div>
 

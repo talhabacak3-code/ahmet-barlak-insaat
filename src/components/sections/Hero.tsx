@@ -25,7 +25,7 @@ export function Hero() {
           </span>
           <span className="hero-line block overflow-clip pb-[0.04em]">
             <span style={dl(0.25)}>
-              bir <em className="font-extrabold italic text-brand wdth-125">hesapla</em>
+              bir <em className="italic text-brand">hesapla</em>
             </span>
           </span>
           <span className="hero-line block overflow-clip pb-[0.04em]">
