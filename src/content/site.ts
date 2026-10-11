@@ -143,4 +143,8 @@ export const site = {
 export const whatsappHref = (text?: string) =>
   site.whatsapp ? `https://wa.me/${site.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ""}` : null;
 
+/** Hizmete özel WhatsApp bağlantısı; WhatsApp tanımlı değilse iletişim formuna (hizmet seçili) düşer. */
+export const serviceHref = (service: Pick<Service, "slug" | "title">) =>
+  whatsappHref(`Merhaba, "${service.title}" hakkında bilgi almak istiyorum.`) ?? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/iletisim/?hizmet=${service.slug}`;
+
 export const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.address.full)}`;

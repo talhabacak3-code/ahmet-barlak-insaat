@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ServiceGlyph } from "@/components/drawings/ServiceGlyph";
-import { site } from "@/content/site";
+import { WhatsAppIcon } from "@/components/brand/WhatsAppIcon";
+import { serviceHref, site } from "@/content/site";
 
 export function ServicesIndex() {
   return (
@@ -21,8 +22,9 @@ export function ServicesIndex() {
         <ol className="border-t border-ink/70">
           {site.services.map((s, i) => (
             <li key={s.slug} className="border-b hairline">
-              <Link
-                href={`/hizmetler#${s.slug}`}
+              <a
+                href={serviceHref(s)}
+                {...(site.whatsapp ? { target: "_blank", rel: "noopener noreferrer", "aria-label": `${s.title} — WhatsApp'tan bilgi alın` } : {})}
                 className="group relative grid grid-cols-[3rem_1fr_auto] items-center gap-x-4 gap-y-2 overflow-hidden px-2 py-6 md:grid-cols-12 md:gap-x-6 md:px-4 md:py-8"
               >
                 <span
@@ -40,11 +42,18 @@ export function ServicesIndex() {
                 </span>
                 <span className="relative col-start-3 row-start-1 flex items-center justify-end gap-5 md:col-span-2 md:col-start-auto md:row-start-auto">
                   <ServiceGlyph name={s.glyph} className="hidden h-14 w-14 text-ink transition-colors duration-500 group-hover:text-paper md:block" />
-                  <span aria-hidden="true" className="text-xl transition-[transform,color] duration-500 group-hover:-rotate-45 group-hover:text-paper">
-                    →
-                  </span>
+                  {site.whatsapp ? (
+                    <span className="flex items-center gap-2 text-[#127a3a] transition-colors duration-500 group-hover:text-paper">
+                      <span className="label hidden lg:inline">WhatsApp</span>
+                      <WhatsAppIcon className="size-6" />
+                    </span>
+                  ) : (
+                    <span aria-hidden="true" className="text-xl transition-[transform,color] duration-500 group-hover:-rotate-45 group-hover:text-paper">
+                      →
+                    </span>
+                  )}
                 </span>
-              </Link>
+              </a>
             </li>
           ))}
         </ol>

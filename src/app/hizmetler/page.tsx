@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/metadata";
-import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { ProcessStory } from "@/components/sections/ProcessStory";
 import { ContactFinale } from "@/components/sections/ContactFinale";
 import { ServiceGlyph } from "@/components/drawings/ServiceGlyph";
-import { site } from "@/content/site";
+import { WhatsAppIcon } from "@/components/brand/WhatsAppIcon";
+import { serviceHref, site } from "@/content/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Hizmetler",
@@ -61,12 +61,17 @@ export default function HizmetlerPage() {
                     </li>
                   ))}
                 </ul>
-                <Link href={`/iletisim?hizmet=${s.slug}`} className="group mt-6 inline-flex items-center gap-3 font-medium text-brand">
-                  <span className="u-link">Bu hizmet için görüşelim</span>
+                <a
+                  href={serviceHref(s)}
+                  {...(site.whatsapp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="group mt-6 inline-flex h-12 items-center gap-3 rounded-full bg-[#25D366] pl-4 pr-5 font-medium text-ink transition-colors duration-300 hover:bg-[#1ebe5a]"
+                >
+                  <WhatsAppIcon className="size-5" />
+                  <span>{site.whatsapp ? "WhatsApp'tan bilgi alın" : "Bu hizmet için görüşelim"}</span>
                   <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
                     →
                   </span>
-                </Link>
+                </a>
               </div>
             </article>
           ))}
