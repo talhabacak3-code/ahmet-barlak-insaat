@@ -8,7 +8,7 @@ Tüm firma verisi: `src/content/site.ts`. Başka firmaya uyarlamada yalnızca bu
 |---|---|
 | `/` | Güven + yönlendirme; aramaya dönüştürme |
 | `/kurumsal` | Firma yaklaşımı, ilkeler, yerel odak |
-| `/hizmetler` | Hizmet kapsamları (SEO: "Afyonkarahisar inşaat firması", "kentsel dönüşüm Afyon") |
+| `/hizmetler` | Hizmet kapsamları (SEO: "Afyonkarahisar inşaat firması", "kaba inşaat taşeron Afyon", "müteahhit Afyonkarahisar") |
 | `/projeler` | Pafta formatında proje portföyü (firma verisi gelene dek yer tutucu) |
 | `/iletisim` | Telefon, WhatsApp proje formu, adres, harita |
 
@@ -16,7 +16,7 @@ Tüm firma verisi: `src/content/site.ts`. Başka firmaya uyarlamada yalnızca bu
 
 1. **Hero / Pafta başlığı** — Büyük başlık "Her yapı bir hesapla başlar." + antet satırı (konum, koordinat, telefon) + Afyonkarahisar silüeti (Kale + yeni yapı) çizimi. CTA: Ara / Proje görüşmesi.
 2. **Tanım (Manifesto)** — Kaydırmayla dolan büyük editoryal paragraf + firma künye tablosu (merkez, iletişim, hizmet alanı). Amaç: kim olduğumuzu tek nefeste söylemek.
-3. **Hizmetler dizini** — 01–06 numaralı satırlar, tam genişlik. Amaç: taranabilir kapsam; her satır `/hizmetler#...`'e gider.
+3. **Hizmetler dizini** — 01–04 numaralı satırlar, tam genişlik. Amaç: taranabilir kapsam; her satır `/hizmetler#...`'e gider.
 4. **Süreç (Sticky story)** — Koyu zemin. Solda sabit çizim: arsa → aks → temel → karkas → teslim. Sağda 5 adım. Amaç: belirsizliği azaltmak (inşaat müşterisinin en büyük kaygısı).
 5. **Projeler (yatay kaydırma)** — Pafta kartları. CTA: tüm projeler.
 6. **İlkeler bandı** — Bordo zemin, 4 ilke. Amaç: vaat değil, çalışma biçimi.
@@ -35,7 +35,7 @@ Tüm firma verisi: `src/content/site.ts`. Başka firmaya uyarlamada yalnızca bu
 
 ## Varsayımlar (firmadan teyit alınacak)
 
-- Hizmet listesi (6 kalem) sektörel varsayımdır.
+- Hizmet listesi (4 kalem) firmadan alındı: kaba inşaat taşeronluk, müteahhitlik, proje yönetimi ve danışmanlığı, anahtar teslim uygulama. Açıklama/kapsam metinleri genel tanımdır, teyit edilmeli.
 - 0532 hattının WhatsApp'ta aktif olduğu varsayıldı.
 - Proje, kuruluş yılı, ekip, belge bilgisi yok → uydurulmadı; yer tutucu olarak işaretlendi.
 - Alan adı bilinmiyor → `NEXT_PUBLIC_SITE_URL` ortam değişkeni.

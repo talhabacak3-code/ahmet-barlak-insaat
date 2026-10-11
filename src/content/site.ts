@@ -6,7 +6,7 @@
  * olarak işaretli kayıtlar gerçek veri geldiğinde değiştirilmelidir.
  */
 
-export type GlyphKey = "konut" | "ticari" | "proje" | "donusum" | "tadilat" | "anahtar";
+export type GlyphKey = "karkas" | "konut" | "proje" | "anahtar";
 
 export type Service = {
   slug: string;
@@ -55,7 +55,7 @@ export const site = {
   tagline: "inşaat & mühendislik",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   description:
-    "Afyonkarahisar merkezli inşaat ve mühendislik firması. Konut, ticari yapı, kentsel dönüşüm ve proje-mühendislik hizmetlerinde keşiften teslime tek muhatap.",
+    "Afyonkarahisar merkezli inşaat ve mühendislik firması. Kaba inşaat taşeronluğu, müteahhitlik, proje yönetimi ve anahtar teslim uygulama hizmetlerinde tek muhatap.",
   phone: { display: "0532 270 80 47", href: "tel:+905322708047", e164: "+905322708047" },
   // Varsayım: 0532 hattı WhatsApp'ta aktif. Değilse `whatsapp: null` yapın.
   whatsapp: "905322708047" as string | null,
@@ -74,56 +74,38 @@ export const site = {
     { href: "/iletisim", label: "İletişim", sheet: "05" },
   ],
 
-  // Varsayım: sektörel standart hizmet kalemleri — firmadan teyit alınmalı.
+  // Firmanın belirttiği hizmet kalemleri. Açıklama ve kapsam metinleri genel tanımlardır — firmadan teyit alınmalı.
   services: [
     {
-      slug: "konut-projeleri",
-      title: "Konut Projeleri",
-      short: "Müstakil evden çok katlı apartmana, yaşanacak yapılar.",
+      slug: "kaba-insaat-taseronluk",
+      title: "Kaba İnşaat Taşeronluk Hizmeti",
+      short: "Temel, kalıp, demir, beton ve duvar işlerinde uygulama ekibi.",
       description:
-        "Arsanın koşullarına, bütçenize ve yaşam biçiminize göre planlanan konut yapıları. Projelendirmeden anahtar teslimine kadar tüm aşamalar tek elden yürütülür.",
-      scope: ["Müstakil ve villa tipi konutlar", "Çok katlı apartman yapıları", "Kat karşılığı projeler", "Kaba ve ince işlerin yönetimi"],
+        "Müteahhit ve ana yüklenici firmalar adına kaba inşaat işlerini üstleniyoruz. Temelden karkasa her aşama, projeye ve iş programına uygun şekilde, mühendislik kontrolünde ilerler.",
+      scope: ["Temel imalatı", "Kalıp, demir ve beton işleri", "Betonarme karkas", "Duvar ve kaba yapı işleri"],
+      glyph: "karkas",
+    },
+    {
+      slug: "muteahhitlik",
+      title: "Müteahhitlik Hizmeti",
+      short: "Arsadan teslime, yapının sorumluluğu tek elde.",
+      description:
+        "Konut ve ticari yapılarda planlama, resmi süreçler, uygulama ve teslim tek bir sorumluluk altında yürütülür. Siz süreç boyunca tek bir muhatapla ilerlersiniz.",
+      scope: ["Konut ve ticari yapılar", "Kat karşılığı projeler", "Ruhsat ve iskân süreçlerinin takibi", "Uygulama ve teslim"],
       glyph: "konut",
     },
     {
-      slug: "ticari-yapilar",
-      title: "Ticari & Endüstriyel Yapılar",
-      short: "İş yeri, mağaza, depo ve atölye yapıları.",
+      slug: "proje-yonetimi-danismanlik",
+      title: "Proje Yönetimi ve Danışmanlığı",
+      short: "Keşif, maliyet ve takvimde doğru kararlar için mühendislik desteği.",
       description:
-        "İşletmenizin iş akışını merkeze alan, işlevsel ve bakımı kolay ticari yapılar. Açıklık, yük ve kullanım senaryoları proje başında netleştirilir.",
-      scope: ["İş yeri ve mağaza yapıları", "Depo ve atölye binaları", "Çelik ve betonarme sistemler", "İşletme ihtiyacına göre yerleşim"],
-      glyph: "ticari",
-    },
-    {
-      slug: "proje-muhendislik",
-      title: "Proje & Mühendislik",
-      short: "Keşif, metraj, maliyet ve proje koordinasyonu.",
-      description:
-        "Uygulamaya geçmeden önce yapının hesabını doğru kurmak için keşif, metraj ve maliyet analizi; mimari ve mühendislik projelerinin koordinasyonu.",
-      scope: ["Yerinde keşif ve ihtiyaç analizi", "Metraj ve maliyet hesabı", "Proje koordinasyonu", "İş programı ve planlama"],
+        "Yatırım kararından uygulamaya kadar projenizi mühendislik bakışıyla planlar ve yönetiriz. Keşif, metraj, maliyet ve iş programıyla süreci öngörülebilir hâle getiririz.",
+      scope: ["Yerinde keşif ve ihtiyaç analizi", "Metraj ve maliyet hesabı", "İş programı ve takip", "Proje koordinasyonu"],
       glyph: "proje",
     },
     {
-      slug: "kentsel-donusum",
-      title: "Kentsel Dönüşüm",
-      short: "Riskli yapıların güvenli yapılarla yenilenmesi.",
-      description:
-        "Riskli yapı sürecinden yeni binanın teslimine kadar hak sahipleriyle şeffaf iletişim içinde yürütülen yenileme projeleri.",
-      scope: ["Süreç ve evrak yönlendirmesi", "Hak sahipleriyle koordinasyon", "Yıkım ve yeniden yapım", "Teslim ve iskân süreci desteği"],
-      glyph: "donusum",
-    },
-    {
-      slug: "tadilat-guclendirme",
-      title: "Tadilat & Güçlendirme",
-      short: "Mevcut yapıların yenilenmesi ve iyileştirilmesi.",
-      description:
-        "Mevcut yapıların ihtiyaca göre yenilenmesi; iç mekân düzenlemeleri, cephe yenileme ve mühendislik değerlendirmesine dayalı iyileştirme çalışmaları.",
-      scope: ["İç mekân tadilatı", "Cephe ve çatı yenileme", "Yapısal değerlendirme", "Güçlendirme uygulamaları"],
-      glyph: "tadilat",
-    },
-    {
       slug: "anahtar-teslim",
-      title: "Anahtar Teslim Uygulama",
+      title: "Anahtar Teslim Uygulama Hizmetleri",
       short: "Temelden son kat boyaya tek sözleşme, tek muhatap.",
       description:
         "Kaba inşaat, tesisat ve ince işlerin tek bir planla, tek bir muhatapla yürütüldüğü uygulama modeli. Sizin için süreç sade, sorumluluk net.",

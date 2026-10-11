@@ -9,7 +9,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Hizmetler",
-  description: "Afyonkarahisar'da konut projeleri, ticari ve endüstriyel yapılar, proje ve mühendislik, kentsel dönüşüm, tadilat ve anahtar teslim uygulama hizmetleri.",
+  description: "Afyonkarahisar'da kaba inşaat taşeronluk hizmeti, müteahhitlik hizmeti, proje yönetimi ve danışmanlığı ile anahtar teslim uygulama hizmetleri.",
   path: "/hizmetler/",
 });
 

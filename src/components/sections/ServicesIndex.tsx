@@ -11,7 +11,7 @@ export function ServicesIndex() {
             <span aria-hidden="true">§ </span>Hizmetler
           </p>
           <h2 id="hizmetler-baslik" data-reveal="lines" className="display text-[clamp(2.4rem,6vw,5.6rem)] lg:col-span-7">
-            Temelden anahtara, altı iş kalemi.
+            Temelden anahtara, dört hizmet.
           </h2>
           <Link href="/hizmetler" className="label u-link self-end justify-self-start text-muted hover:text-ink lg:col-span-2 lg:justify-self-end">
             Tüm kapsam →

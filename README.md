@@ -41,7 +41,7 @@ Proje görselleri eklerken yolu `/` ile başlatın (örn. `/projeler/konut-01.jp
 
 ## Firmadan teyit edilecekler
 
-- Hizmet listesi (6 kalem sektörel varsayımdır)
+- Hizmet açıklama ve kapsam metinleri (hizmet adları firmadan alındı; metinler genel tanımdır)
 - 0532 hattının WhatsApp'ta aktif olduğu
 - Orijinal vektör logo (şu an `public/brand/logo-orijinal.jpg` referans alınarak yeniden çizildi)
 - Gerçek proje bilgileri ve fotoğrafları

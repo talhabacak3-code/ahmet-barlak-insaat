@@ -7,7 +7,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Projeler",
-  description: `${site.name} proje portföyü: Afyonkarahisar'da konut, ticari, endüstriyel ve kentsel dönüşüm projeleri.`,
+  description: `${site.name} proje portföyü: Afyonkarahisar'da tamamlanan ve devam eden projeler.`,
   path: "/projeler/",
 });
 

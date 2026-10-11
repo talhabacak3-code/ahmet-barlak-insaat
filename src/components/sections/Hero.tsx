@@ -35,7 +35,7 @@ export function Hero() {
 
         <div className="hero-fade flex flex-col justify-end gap-8 lg:col-span-3 lg:pb-4" style={dl(0.7)}>
           <p className="max-w-md text-[1.05rem] leading-relaxed text-ink/80">
-            {site.name}; Afyonkarahisar&apos;da konut, ticari yapı ve kentsel dönüşüm projelerinde keşiften teslime kadar tek muhatap.
+            {site.name}; Afyonkarahisar&apos;da kaba inşaat taşeronluğundan anahtar teslim uygulamaya kadar tek muhatap.
           </p>
           <div className="flex flex-col gap-3 xs:flex-row lg:flex-col">
             <Link
@@ -69,7 +69,7 @@ export function Hero() {
           </div>
           <div className="hidden border-l hairline py-5 pl-4 md:block">
             <dt className="label text-muted">Uzmanlık</dt>
-            <dd className="mt-1.5 text-sm">Konut · Ticari · Dönüşüm</dd>
+            <dd className="mt-1.5 text-sm">Taşeronluk · Müteahhitlik · Anahtar teslim</dd>
           </div>
           <div className="hidden items-end justify-end border-l hairline py-5 pl-4 md:flex">
             <a href="#tanim" className="label u-link text-muted hover:text-ink">
