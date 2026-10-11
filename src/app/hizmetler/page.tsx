@@ -3,9 +3,9 @@ import { pageMeta } from "@/lib/metadata";
 import { PageHero } from "@/components/sections/PageHero";
 import { ProcessStory } from "@/components/sections/ProcessStory";
 import { ContactFinale } from "@/components/sections/ContactFinale";
-import { ServiceGlyph } from "@/components/drawings/ServiceGlyph";
+import Image from "next/image";
 import { WhatsAppIcon } from "@/components/brand/WhatsAppIcon";
-import { serviceHref, site } from "@/content/site";
+import { asset, serviceHref, site } from "@/content/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Hizmetler",
@@ -41,10 +41,18 @@ export default function HizmetlerPage() {
         <div className="lg:col-span-9">
           {site.services.map((s, i) => (
             <article key={s.slug} id={s.slug} aria-labelledby={`${s.slug}-baslik`} className="grid scroll-mt-24 gap-8 border-b hairline py-16 last:border-b-0 md:grid-cols-9 md:gap-6 md:py-24">
-              <div className="flex items-start justify-between md:col-span-9">
-                <span className="label text-brand">Hizmet {String(i + 1).padStart(2, "0")}</span>
-                <ServiceGlyph name={s.glyph} className="h-16 w-16 text-ink md:h-20 md:w-20" />
-              </div>
+              <span className="label text-brand md:col-span-9">Hizmet {String(i + 1).padStart(2, "0")}</span>
+              <figure className="relative aspect-[16/10] overflow-hidden bg-paper-2 md:col-span-9 md:aspect-[21/9]" data-reveal="fade">
+                <Image
+                  src={asset(s.image)}
+                  alt={s.imageAlt}
+                  fill
+                  sizes="(min-width: 1024px) 68vw, 100vw"
+                  priority={i === 0}
+                  className="object-cover"
+                />
+                <figcaption className="label absolute bottom-0 right-0 bg-paper/85 px-3 py-1.5 text-[0.62rem] text-muted">Temsili görsel</figcaption>
+              </figure>
               <h2 id={`${s.slug}-baslik`} data-reveal="lines" className="display text-[clamp(2.2rem,5vw,4.4rem)] md:col-span-6">
                 {s.title}
               </h2>

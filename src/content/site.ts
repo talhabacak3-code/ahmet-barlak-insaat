@@ -6,15 +6,15 @@
  * olarak işaretli kayıtlar gerçek veri geldiğinde değiştirilmelidir.
  */
 
-export type GlyphKey = "karkas" | "konut" | "proje" | "anahtar";
-
 export type Service = {
   slug: string;
   title: string;
   short: string;
   description: string;
   scope: string[];
-  glyph: GlyphKey;
+  /** /public altındaki görsel (1600px). Küçük kare için aynı adın "-thumb" sürümü kullanılır. */
+  image: string;
+  imageAlt: string;
 };
 
 export type Drawing = {
@@ -83,7 +83,8 @@ export const site = {
       description:
         "Müteahhit ve ana yüklenici firmalar adına kaba inşaat işlerini üstleniyoruz. Temelden karkasa her aşama, projeye ve iş programına uygun şekilde, mühendislik kontrolünde ilerler.",
       scope: ["Temel imalatı", "Kalıp, demir ve beton işleri", "Betonarme karkas", "Duvar ve kaba yapı işleri"],
-      glyph: "karkas",
+      image: "/hizmetler/kaba-insaat-taseronluk.webp",
+      imageAlt: "Güvenlik filesiyle çevrili, yapım aşamasındaki betonarme karkas",
     },
     {
       slug: "muteahhitlik",
@@ -92,7 +93,8 @@ export const site = {
       description:
         "Konut ve ticari yapılarda planlama, resmi süreçler, uygulama ve teslim tek bir sorumluluk altında yürütülür. Siz süreç boyunca tek bir muhatapla ilerlersiniz.",
       scope: ["Konut ve ticari yapılar", "Kat karşılığı projeler", "Ruhsat ve iskân süreçlerinin takibi", "Uygulama ve teslim"],
-      glyph: "konut",
+      image: "/hizmetler/muteahhitlik.webp",
+      imageAlt: "Taş kaplamalı, yeni tamamlanmış çok katlı konut yapısı",
     },
     {
       slug: "proje-yonetimi-danismanlik",
@@ -101,7 +103,8 @@ export const site = {
       description:
         "Yatırım kararından uygulamaya kadar projenizi mühendislik bakışıyla planlar ve yönetiriz. Keşif, metraj, maliyet ve iş programıyla süreci öngörülebilir hâle getiririz.",
       scope: ["Yerinde keşif ve ihtiyaç analizi", "Metraj ve maliyet hesabı", "İş programı ve takip", "Proje koordinasyonu"],
-      glyph: "proje",
+      image: "/hizmetler/proje-yonetimi-danismanlik.webp",
+      imageAlt: "Şantiye ofisinde proje paftaları, baret ve iş programı",
     },
     {
       slug: "anahtar-teslim",
@@ -110,7 +113,8 @@ export const site = {
       description:
         "Kaba inşaat, tesisat ve ince işlerin tek bir planla, tek bir muhatapla yürütüldüğü uygulama modeli. Sizin için süreç sade, sorumluluk net.",
       scope: ["Kaba inşaat", "Tesisat koordinasyonu", "İnce işler ve dış cephe", "Teslim öncesi kontroller"],
-      glyph: "anahtar",
+      image: "/hizmetler/anahtar-teslim.webp",
+      imageAlt: "Teslime hazır yeni dairede taş tezgâh üzerinde anahtarlar",
     },
   ] satisfies Service[],
 
@@ -146,5 +150,8 @@ export const whatsappHref = (text?: string) =>
 /** Hizmete özel WhatsApp bağlantısı; WhatsApp tanımlı değilse iletişim formuna (hizmet seçili) düşer. */
 export const serviceHref = (service: Pick<Service, "slug" | "title">) =>
   whatsappHref(`Merhaba, "${service.title}" hakkında bilgi almak istiyorum.`) ?? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/iletisim/?hizmet=${service.slug}`;
+
+/** /public altındaki dosya yolu — GitHub Pages alt yol önekiyle. */
+export const asset = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
 
 export const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.address.full)}`;

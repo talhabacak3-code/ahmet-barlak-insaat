@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ServiceGlyph } from "@/components/drawings/ServiceGlyph";
+import Image from "next/image";
 import { WhatsAppIcon } from "@/components/brand/WhatsAppIcon";
-import { serviceHref, site } from "@/content/site";
+import { asset, serviceHref, site } from "@/content/site";
 
 export function ServicesIndex() {
   return (
@@ -34,14 +34,23 @@ export function ServicesIndex() {
                 <span className="label relative text-muted transition-[color,transform] duration-500 group-hover:translate-x-3 group-hover:text-paper/70 md:col-span-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="display relative text-[clamp(1.6rem,3.4vw,3rem)] transition-colors duration-500 group-hover:text-paper md:col-span-5">
+                <span className="display relative text-[clamp(1.6rem,3.4vw,3rem)] transition-colors duration-500 group-hover:text-paper md:col-span-4">
                   {s.title}
                 </span>
                 <span className="relative col-span-2 col-start-2 max-w-md text-[0.95rem] leading-relaxed text-muted transition-colors duration-500 group-hover:text-paper/80 md:col-span-4 md:col-start-auto">
                   {s.short}
                 </span>
-                <span className="relative col-start-3 row-start-1 flex items-center justify-end gap-5 md:col-span-2 md:col-start-auto md:row-start-auto">
-                  <ServiceGlyph name={s.glyph} className="hidden h-14 w-14 text-ink transition-colors duration-500 group-hover:text-paper md:block" />
+                <span className="relative col-start-3 row-start-1 flex items-center justify-end gap-3 md:col-span-3 md:col-start-auto md:row-start-auto md:gap-5">
+                  {/* Hizmet görseli — soluk başlar, üzerine gelince renklenir */}
+                  <span className="relative block aspect-[4/3] w-16 shrink-0 overflow-hidden bg-paper-2 md:w-32 lg:w-36">
+                    <Image
+                      src={asset(s.image.replace(".webp", "-thumb.webp"))}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 144px, (min-width: 768px) 128px, 64px"
+                      className="object-cover saturate-[0.75] transition-[transform,filter] duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.06] group-hover:saturate-100"
+                    />
+                  </span>
                   {site.whatsapp ? (
                     <span className="flex items-center gap-2 text-[#127a3a] transition-colors duration-500 group-hover:text-paper">
                       <span className="label hidden lg:inline">WhatsApp</span>
