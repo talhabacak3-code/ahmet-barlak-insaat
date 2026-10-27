@@ -9,7 +9,7 @@ export function Footer() {
       <div className="shell">
         <div className="grid gap-12 pt-14 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Logo tone="light" />
+            <Logo tone="light" className="h-14 md:h-16" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-paper/65">{site.description}</p>
           </div>
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 import { pageMeta } from "@/lib/metadata";
@@ -15,8 +15,6 @@ const fraunces = Fraunces({ subsets: ["latin", "latin-ext"], axes: ["opsz"], sty
 const geist = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist", display: "swap" });
 // Teknik çizim etiketleri (Geist ailesiyle uyumlu)
 const geistMono = Geist_Mono({ subsets: ["latin", "latin-ext"], weight: ["400"], variable: "--font-geist-mono", display: "swap" });
-// Yalnızca logo yazısı
-const archivo = Archivo({ subsets: ["latin", "latin-ext"], axes: ["wdth"], style: ["italic"], variable: "--font-archivo", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -50,6 +48,7 @@ const jsonLd = {
     addressRegion: site.address.city,
     addressCountry: site.address.country,
   },
+  logo: `${site.url}/brand/logo.png`,
   areaServed: { "@type": "City", name: "Afyonkarahisar" },
 };
 
@@ -58,7 +57,7 @@ const motionScript = `try{if(!matchMedia('(prefers-reduced-motion: reduce)').mat
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" suppressHydrationWarning className={`${fraunces.variable} ${geist.variable} ${geistMono.variable} ${archivo.variable}`}>
+    <html lang="tr" suppressHydrationWarning className={`${fraunces.variable} ${geist.variable} ${geistMono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: motionScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

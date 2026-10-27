@@ -24,7 +24,7 @@ Proje görselleri eklerken yolu `/` ile başlatın (örn. `/projeler/konut-01.jp
 ## Başka bir inşaat firmasına uyarlama
 
 1. **`src/content/site.ts`** — firma adı, telefon, adres, WhatsApp, hizmetler, süreç, ilkeler, projeler. Tüm sayfalar buradan beslenir.
-2. **Logo** — `src/components/brand/Logo.tsx` (monogram SVG + yazı) ve `src/app/icon.svg` (favicon).
+2. **Logo** — `public/brand/logo-orijinal.jpg` (orijinal) → `public/brand/logo.png` (kırpılmış, şeffaf zemin) ve `src/app/icon.png` / `apple-icon.png` (yalnız sembol). Bileşen: `src/components/brand/Logo.tsx`.
 3. **Renk** — `src/app/globals.css` içindeki `--color-brand*` token'ları (marka rengi) ve gerekirse `--color-paper`.
 4. **Hero sloganı** — `src/components/sections/Hero.tsx` ve `src/app/opengraph-image.tsx`.
 5. **Silüet** — `src/components/drawings/Skyline.tsx` içindeki Afyon Kalesi çizimi şehre özeldir; başka şehir için kaya/kale path'ini o şehrin simgesiyle değiştirin.
@@ -43,5 +43,5 @@ Proje görselleri eklerken yolu `/` ile başlatın (örn. `/projeler/konut-01.jp
 
 - Hizmet açıklama ve kapsam metinleri (hizmet adları firmadan alındı; metinler genel tanımdır)
 - 0532 hattının WhatsApp'ta aktif olduğu
-- Orijinal vektör logo (şu an `public/brand/logo-orijinal.jpg` referans alınarak yeniden çizildi)
+- Orijinal vektör logo (AI/SVG/PDF): şu an firmanın gönderdiği 447 px JPEG kullanılıyor; vektör dosya gelirse `logo.png` yerine konmalı
 - Gerçek proje bilgileri ve fotoğrafları

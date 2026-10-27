@@ -79,7 +79,7 @@ export function Header() {
       >
         <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6">
           <Link href="/" aria-label={`${site.name} — Ana sayfa`} className="relative z-[60] -m-2 p-2">
-            <Logo tone={open ? "light" : "dark"} />
+            <Logo tone={open ? "light" : "dark"} className="h-11 md:h-[52px]" priority />
           </Link>
 
           <nav aria-label="Ana menü" className="hidden lg:block">
