@@ -17,13 +17,13 @@ export function Footer() {
             <p className="label mb-4 text-paper/50">Sayfalar</p>
             <ul className="grid gap-2 ui-menu text-menu">
               <li>
-                <Link href="/" className="u-link">
+                <Link href="/" className="u-link transition-colors hover:text-brand-soft">
                   Ana Sayfa
                 </Link>
               </li>
               {site.nav.map((i) => (
                 <li key={i.href}>
-                  <Link href={i.href} className="u-link">
+                  <Link href={i.href} className="u-link transition-colors hover:text-brand-soft">
                     {i.label}
                   </Link>
                 </li>
@@ -33,10 +33,10 @@ export function Footer() {
 
           <div className="md:col-span-2">
             <p className="label mb-4 text-paper/50">Hizmetler</p>
-            <ul className="grid gap-2 text-sm">
+            <ul className="grid gap-2 ui-menu text-menu">
               {site.services.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/hizmetler#${s.slug}`} className="u-link">
+                  <Link href={`/hizmetler#${s.slug}`} className="u-link transition-colors hover:text-brand-soft">
                     {s.title}
                   </Link>
                 </li>
@@ -55,19 +55,19 @@ export function Footer() {
             </address>
             <ul className="mt-5 grid gap-2 text-sm">
               <li>
-                <a href={site.phone.href} className="u-link">
+                <a href={site.phone.href} className="u-link transition-colors hover:text-brand-soft">
                   {site.phone.display}
                 </a>
               </li>
               {wa && (
                 <li>
-                  <a href={wa} target="_blank" rel="noopener noreferrer" className="u-link">
+                  <a href={wa} target="_blank" rel="noopener noreferrer" className="u-link transition-colors hover:text-brand-soft">
                     WhatsApp ↗
                   </a>
                 </li>
               )}
               <li>
-                <a href={directionsHref} target="_blank" rel="noopener noreferrer" className="u-link">
+                <a href={directionsHref} target="_blank" rel="noopener noreferrer" className="u-link transition-colors hover:text-brand-soft">
                   Yol tarifi ↗
                 </a>
               </li>

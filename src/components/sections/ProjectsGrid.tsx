@@ -28,7 +28,7 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
               onClick={() => setFilter(t)}
               aria-pressed={filter === t}
               className={`label h-10 border px-4 transition-colors ${
-                filter === t ? "border-ink bg-ink text-paper" : "border-ink/25 text-ink hover:border-ink"
+                filter === t ? "border-brand bg-brand text-paper" : "border-line text-ink hover:border-brand hover:text-brand"
               }`}
             >
               {t}

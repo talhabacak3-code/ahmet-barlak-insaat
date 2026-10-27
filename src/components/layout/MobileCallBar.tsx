@@ -34,7 +34,7 @@ export function MobileCallBar() {
       } ${hide ? "translate-y-full" : "translate-y-0"}`}
       aria-hidden={hide || undefined}
     >
-      <a href={site.phone.href} tabIndex={hide ? -1 : undefined} className="flex h-14 items-center justify-center gap-2 bg-brand ui-btn text-paper">
+      <a href={site.phone.href} tabIndex={hide ? -1 : undefined} className="flex h-14 items-center justify-center gap-2 bg-brand ui-btn text-paper transition-colors hover:bg-brand-deep">
         <PhoneIcon /> Hemen ara
       </a>
       {wa && (

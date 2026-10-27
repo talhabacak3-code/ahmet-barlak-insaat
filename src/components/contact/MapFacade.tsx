@@ -9,7 +9,7 @@ export function MapFacade() {
   const src = `https://www.google.com/maps?q=${encodeURIComponent(site.address.full)}&output=embed`;
 
   return (
-    <div className="crop relative aspect-[4/3] w-full overflow-hidden border border-ink/25 bg-paper-2/60 text-ink md:aspect-[16/7]">
+    <div className="crop relative aspect-[4/3] w-full overflow-hidden border border-line bg-paper-2 text-ink md:aspect-[16/7]">
       {load ? (
         <iframe title={`${site.name} konumu — Google Haritalar`} src={src} className="absolute inset-0 h-full w-full grayscale-[0.6]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
       ) : (
@@ -27,10 +27,10 @@ export function MapFacade() {
             </span>
             <p className="label max-w-xs text-ink">{site.address.full}</p>
             <div className="flex flex-wrap justify-center gap-3">
-              <button type="button" onClick={() => setLoad(true)} className="label h-11 bg-ink px-5 text-paper transition-colors hover:bg-brand">
+              <button type="button" onClick={() => setLoad(true)} className="btn btn-dark btn-sm">
                 Haritayı göster
               </button>
-              <a href={directionsHref} target="_blank" rel="noopener noreferrer" className="label flex h-11 items-center border border-ink/40 bg-paper px-5 transition-colors hover:border-brand hover:text-brand">
+              <a href={directionsHref} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm bg-paper">
                 Yol tarifi ↗
               </a>
             </div>

@@ -68,9 +68,9 @@ export function ProjectsRail() {
               <p className="max-w-sm leading-relaxed text-muted">
                 Tamamlanan ve devam eden işlerimizi; konumu, türü ve durumuyla birlikte teknik bir kayıt olarak sunuyoruz.
               </p>
-              <Link href="/projeler" className="group flex h-14 w-fit items-center gap-6 border border-ink/80 px-6 transition-colors hover:border-brand hover:text-brand">
-                <span className="ui-btn">Tüm projeler</span>
-                <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
+              <Link href="/projeler" className="btn btn-secondary w-fit">
+                Tüm projeler
+                <span aria-hidden="true" className="btn-arrow">
                   →
                 </span>
               </Link>

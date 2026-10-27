@@ -34,7 +34,7 @@ export function ContactFinale({ heading = "Projenizi konuşalım." }: { heading?
         <div className="mt-16 flex flex-col gap-12 lg:mt-24 lg:flex-row lg:items-center lg:justify-between">
           <a href={site.phone.href} className="group block w-fit" aria-label={`Telefon: ${site.phone.display}`}>
             {/* ölçü çizgisi — numaranın genişliği kadar */}
-            <span aria-hidden="true" className="label flex items-center gap-3 text-paper/40">
+            <span aria-hidden="true" className="label flex items-center gap-3 text-paper/65">
               <span className="h-3 w-px bg-current" />
               <span className="h-px flex-1 bg-current" />
               <span>Doğrudan hat</span>

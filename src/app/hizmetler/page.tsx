@@ -29,7 +29,7 @@ export default function HizmetlerPage() {
           <ol className="sticky top-[calc(var(--header-h)+32px)] grid gap-3 py-16">
             {site.services.map((s, i) => (
               <li key={s.slug}>
-                <a href={`#${s.slug}`} className="group flex items-baseline gap-3 text-sm text-muted transition-colors hover:text-ink">
+                <a href={`#${s.slug}`} className="group flex items-baseline gap-3 ui-menu text-menu text-muted transition-colors hover:text-brand">
                   <span className="label text-[0.62rem] group-hover:text-brand">{String(i + 1).padStart(2, "0")}</span>
                   <span className="u-link">{s.title}</span>
                 </a>
@@ -72,11 +72,13 @@ export default function HizmetlerPage() {
                 <a
                   href={serviceHref(s)}
                   {...(site.whatsapp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="group mt-6 inline-flex h-12 items-center gap-3 rounded-full bg-[#25D366] pl-4 pr-5 ui-btn text-ink transition-colors duration-300 hover:bg-[#1ebe5a]"
+                  className={`btn mt-6 ${site.whatsapp ? "btn-wa" : "btn-primary"}`}
                 >
-                  <WhatsAppIcon className="size-5" />
-                  <span>{site.whatsapp ? "WhatsApp'tan bilgi alın" : "Bu hizmet için görüşelim"}</span>
-                  <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
+                  <span className="flex items-center gap-3">
+                    {site.whatsapp && <WhatsAppIcon className="size-5" />}
+                    {site.whatsapp ? "WhatsApp'tan bilgi alın" : "Bu hizmet için görüşelim"}
+                  </span>
+                  <span aria-hidden="true" className="btn-arrow">
                     →
                   </span>
                 </a>

@@ -5,8 +5,8 @@ import { ElevationSheet } from "@/components/drawings/ElevationSheet";
 /** "Pafta" formatında proje kartı: görsel/çizim + antet tablosu. */
 export function ProjectCard({ project, index, sizes = "(min-width: 1024px) 40vw, 85vw" }: { project: Project; index: number; sizes?: string }) {
   return (
-    <article className="group flex h-full flex-col border border-ink/25 bg-paper">
-      <div className="relative aspect-[4/3] overflow-hidden border-b border-ink/25 bg-paper-2/60">
+    <article className="group flex h-full flex-col border border-line bg-paper transition-colors duration-500 hover:border-ink/40">
+      <div className="relative aspect-[4/3] overflow-hidden border-b border-line bg-paper-2">
         {project.image ? (
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${project.image}`}
@@ -23,16 +23,16 @@ export function ProjectCard({ project, index, sizes = "(min-width: 1024px) 40vw,
         )}
       </div>
       <div className="grid grid-cols-[auto_1fr] text-sm">
-        <span className="label flex items-center border-r border-ink/25 px-4 text-brand">{String(index + 1).padStart(2, "0")}</span>
+        <span className="label flex items-center border-r border-line px-4 text-brand">{String(index + 1).padStart(2, "0")}</span>
         <h3 className="display px-4 py-4 text-[clamp(1.25rem,1.1rem+0.5vw,1.5rem)]">{project.title}</h3>
       </div>
-      <dl className="mt-auto grid grid-cols-3 border-t border-ink/25 text-[0.8rem]">
+      <dl className="mt-auto grid grid-cols-3 border-t border-line text-[0.8rem]">
         {[
           ["Tür", project.type],
           ["Konum", project.location],
           ["Durum", project.status],
         ].map(([k, v], i) => (
-          <div key={k} className={`px-4 py-3 ${i ? "border-l border-ink/25" : ""}`}>
+          <div key={k} className={`px-4 py-3 ${i ? "border-l border-line" : ""}`}>
             <dt className="label text-[0.6rem] text-muted">{k}</dt>
             <dd className="mt-1 leading-snug">{v}</dd>
           </div>

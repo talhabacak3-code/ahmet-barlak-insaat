@@ -38,17 +38,14 @@ export function Hero() {
             {site.name}; Afyonkarahisar&apos;da kaba inşaat taşeronluğundan anahtar teslim uygulamaya kadar tek muhatap.
           </p>
           <div className="flex flex-col gap-3 xs:flex-row lg:flex-col">
-            <Link
-              href="/iletisim"
-              className="group flex h-14 items-center justify-between gap-6 bg-ink px-6 text-paper transition-colors hover:bg-brand"
-            >
-              <span className="ui-btn">Proje görüşmesi</span>
-              <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
+            <Link href="/iletisim" className="btn btn-primary">
+              Proje görüşmesi
+              <span aria-hidden="true" className="btn-arrow">
                 →
               </span>
             </Link>
-            <a href={site.phone.href} className="group flex h-14 items-center justify-between gap-6 border border-ink/80 px-6 transition-colors hover:border-brand hover:text-brand">
-              <span className="ui-btn">{site.phone.display}</span>
+            <a href={site.phone.href} className="btn btn-secondary">
+              {site.phone.display}
               <span className="label">Ara</span>
             </a>
           </div>
@@ -72,9 +69,12 @@ export function Hero() {
             <dd className="mt-1.5 text-sm">Taşeronluk · Müteahhitlik · Anahtar teslim</dd>
           </div>
           <div className="hidden items-end justify-end border-l hairline py-5 pl-4 md:flex">
-            <a href="#tanim" className="label u-link text-muted hover:text-ink">
-              Aşağı kaydırın ↓
-            </a>
+            <dt className="sr-only">Gezinme</dt>
+            <dd>
+              <a href="#tanim" className="label u-link text-muted hover:text-ink">
+                Aşağı kaydırın ↓
+              </a>
+            </dd>
           </div>
         </dl>
       </div>

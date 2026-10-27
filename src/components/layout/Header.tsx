@@ -77,19 +77,19 @@ export function Header() {
           hidden && !open ? "-translate-y-full" : "translate-y-0"
         } ${open ? "border-b border-transparent bg-transparent" : scrolled ? "border-b hairline bg-paper" : "border-b border-transparent bg-paper/0"}`}
       >
-        <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6">
-          <Link href="/" aria-label={`${site.name} — Ana sayfa`} className="relative z-[60] -m-2 p-2">
-            <Logo tone={open ? "light" : "dark"} className="h-11 md:h-[52px]" priority />
+        <div className="shell grid h-[var(--header-h)] grid-cols-[auto_1fr_auto] items-center gap-6 lg:gap-12">
+          <Link href="/" aria-label={`${site.name} — Ana sayfa`} className="relative z-[60] -m-2 block p-2">
+            <Logo tone={open ? "light" : "dark"} className="h-12 md:h-[60px]" priority />
           </Link>
 
-          <nav aria-label="Ana menü" className="hidden lg:block">
-            <ul className="flex items-center gap-9">
+          <nav aria-label="Ana menü" className="hidden justify-self-center lg:block">
+            <ul className="flex items-center gap-10 xl:gap-12">
               {site.nav.map((item) => {
                 const active = pathname.startsWith(item.href);
                 return (
                   <li key={item.href}>
-                    <Link href={item.href} aria-current={active ? "page" : undefined} className="u-link group flex items-baseline gap-1.5 py-1 ui-menu text-menu">
-                      <span className="label text-[0.62rem] text-muted transition-colors group-hover:text-brand">{item.sheet}</span>
+                    <Link href={item.href} aria-current={active ? "page" : undefined} className="u-link group flex items-baseline gap-1.5 py-1 ui-menu text-menu transition-colors hover:text-brand aria-[current=page]:text-brand">
+                      <span className="label text-[0.62rem] text-muted transition-colors group-hover:text-brand group-aria-[current=page]:text-brand">{item.sheet}</span>
                       {item.label}
                     </Link>
                   </li>
@@ -98,7 +98,7 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="col-start-3 flex items-center gap-4 justify-self-end">
             <a href={site.phone.href} className={`group hidden items-center gap-3 md:flex ${open ? "invisible" : ""}`}>
               <span className="label text-right text-muted">
                 Bizi
@@ -138,14 +138,14 @@ export function Header() {
           <nav aria-label="Mobil menü">
             <ul className="border-t border-paper/15">
               <li className="border-b border-paper/15">
-                <Link href="/" className="flex items-baseline gap-4 py-5">
+                <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className="flex items-baseline gap-4 py-5 transition-colors hover:text-brand-soft aria-[current=page]:text-brand-soft">
                   <span className="label text-brand-soft">01</span>
                   <span className="ui-menu text-mega leading-none">Ana Sayfa</span>
                 </Link>
               </li>
               {site.nav.map((item) => (
                 <li key={item.href} className="border-b border-paper/15">
-                  <Link href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined} className="flex items-baseline gap-4 py-5">
+                  <Link href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined} className="flex items-baseline gap-4 py-5 transition-colors hover:text-brand-soft aria-[current=page]:text-brand-soft">
                     <span className="label text-brand-soft">{item.sheet}</span>
                     <span className="ui-menu text-mega leading-none">{item.label}</span>
                   </Link>

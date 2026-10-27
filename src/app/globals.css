@@ -3,15 +3,15 @@
 
 /* ───────── Tokens ───────── */
 @theme inline {
-  --color-paper: #f2eee7;
-  --color-paper-2: #e8e2d7;
-  --color-ink: #191715;
-  --color-ink-2: #2b2825;
-  --color-muted: #5f5850;
-  --color-brand: #7a1e29;
-  --color-brand-deep: #561520;
-  --color-brand-soft: #d4aeb1;
-  --color-stone: #b8afa2;
+  /* Marka paleti — bordo, orijinal logodan örneklendi (iç tonlar #881C20–#8C181C → #8B1520) */
+  --color-brand: #8b1520; /* Primary Burgundy — buton, aktif menü, vurgu, hover */
+  --color-brand-deep: #6e1019; /* hover / basılı */
+  --color-brand-soft: #e3a3a9; /* koyu zeminde bordo vurgu (#111 üzerinde 8:1) */
+  --color-ink: #111111; /* Black — metin, koyu bölümler */
+  --color-paper: #ffffff; /* White — sayfa zemini */
+  --color-paper-2: #f5f5f5; /* Light Gray — alternatif yüzey */
+  --color-line: #e5e5e5; /* Border Gray — kıl çizgiler */
+  --color-muted: #5c5c5c; /* ikincil metin (beyazda 6.7:1, açık gride 6.1:1) */
 
   /* Başlık: Exo 2 · Menü/buton/etiket: Rajdhani · Paragraf: Inter */
   --font-display: var(--font-exo2), "Arial", sans-serif;
@@ -45,11 +45,15 @@
 }
 
 :root {
-  --line: rgb(25 23 21 / 0.16);
-  --line-strong: rgb(25 23 21 / 0.4);
+  --line: var(--color-line);
   --gutter: clamp(16px, 4vw, 56px);
   --header-h: 72px;
   --section-y: clamp(96px, 13vw, 184px);
+}
+@media (min-width: 768px) {
+  :root {
+    --header-h: 84px;
+  }
 }
 
 /* ───────── Base ───────── */
@@ -130,6 +134,80 @@ svg {
   letter-spacing: -0.015em;
   line-height: 1.05;
 }
+/* Satır kırılımları: başlıklar dengeli, paragraflar tek kelimelik dul satır bırakmaz */
+.display {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
+/* ───────── Buton sistemi — tüm sitede tek kaynak ───────── */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    min-height: 3.5rem;
+    padding: 0 1.5rem;
+    border: 1px solid transparent;
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: var(--text-btn);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    transition:
+      background-color 0.35s ease,
+      border-color 0.35s ease,
+      color 0.35s ease;
+  }
+  .btn-sm {
+    min-height: 2.75rem;
+    padding: 0 1.125rem;
+    gap: 0.75rem;
+  }
+  .btn .btn-arrow {
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+  .btn:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+  /* Ana eylem — bordo */
+  .btn-primary {
+    background: var(--color-brand);
+    color: #ffffff;
+  }
+  .btn-primary:hover {
+    background: var(--color-brand-deep);
+  }
+  /* İkincil — siyah çerçeve, hover'da bordo */
+  .btn-secondary {
+    border-color: var(--color-ink);
+    color: var(--color-ink);
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-brand);
+    color: var(--color-brand);
+  }
+  /* Koyu — siyah zemin, hover'da bordo */
+  .btn-dark {
+    background: var(--color-ink);
+    color: #ffffff;
+  }
+  .btn-dark:hover {
+    background: var(--color-brand);
+  }
+  /* WhatsApp — tanınır yeşil, koyu metin (9:1) */
+  .btn-wa {
+    background: #25d366;
+    color: var(--color-ink);
+  }
+  .btn-wa:hover {
+    background: #1ebe5a;
+  }
+}
+
 /* Vurgu — Exo 2 Bold İtalik (italik yalnızca stratejik vurgularda) */
 .display em,
 em.accent {
@@ -157,10 +235,10 @@ em.accent {
 .mm-grid {
   background-color: var(--color-paper);
   background-image:
-    linear-gradient(rgb(122 30 41 / 0.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(122 30 41 / 0.11) 1px, transparent 1px),
-    linear-gradient(rgb(122 30 41 / 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(122 30 41 / 0.045) 1px, transparent 1px);
+    linear-gradient(rgb(139 21 32 / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(139 21 32 / 0.1) 1px, transparent 1px),
+    linear-gradient(rgb(139 21 32 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(139 21 32 / 0.04) 1px, transparent 1px);
   background-size:
     40px 40px,
     40px 40px,

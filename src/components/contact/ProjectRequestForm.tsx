@@ -109,9 +109,9 @@ export function ProjectRequestForm() {
       )}
 
       <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="group flex h-14 items-center justify-between gap-8 bg-ink px-6 text-paper transition-colors hover:bg-brand">
-          <span className="ui-btn">WhatsApp ile gönder</span>
-          <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
+        <button type="submit" className="btn btn-primary">
+          WhatsApp ile gönder
+          <span aria-hidden="true" className="btn-arrow">
             ↗
           </span>
         </button>

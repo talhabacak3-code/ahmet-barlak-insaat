@@ -25,6 +25,7 @@ export function ScrollEffects() {
           type: "lines",
           mask: "lines",
           linesClass: "rl",
+          aria: "none",
           autoSplit: true,
           onSplit(self) {
             gsap.set(el, { visibility: "visible" });
@@ -53,7 +54,7 @@ export function ScrollEffects() {
       });
 
       q<HTMLElement>('[data-reveal="words"]').forEach((el) => {
-        const split = SplitText.create(el, { type: "words" });
+        const split = SplitText.create(el, { type: "words", aria: "none" });
         gsap.fromTo(
           split.words,
           { opacity: 0.16 },

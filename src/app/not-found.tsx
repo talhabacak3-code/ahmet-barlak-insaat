@@ -6,9 +6,11 @@ export default function NotFound() {
       <p className="label text-brand">Pafta 404</p>
       <h1 className="display display-hero mt-6 text-page">Bu pafta arşivde yok.</h1>
       <p className="mt-6 max-w-md leading-relaxed text-muted">Aradığınız sayfa taşınmış ya da hiç çizilmemiş olabilir.</p>
-      <Link href="/" className="group mt-10 flex h-14 w-fit items-center gap-6 bg-ink px-6 text-paper transition-colors hover:bg-brand">
-        <span className="ui-btn">Ana sayfaya dön</span>
-        <span aria-hidden="true">→</span>
+      <Link href="/" className="btn btn-primary mt-10 w-fit">
+        Ana sayfaya dön
+        <span aria-hidden="true" className="btn-arrow">
+          →
+        </span>
       </Link>
     </section>
   );

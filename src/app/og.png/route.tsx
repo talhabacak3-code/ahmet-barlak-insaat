@@ -26,16 +26,16 @@ export async function GET() {
 
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#f2eee7", padding: 64, fontFamily: font ? "Exo 2" : undefined, fontStyle: "italic" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 18, letterSpacing: 2, color: "#5f5850", borderBottom: "1px solid rgba(25,23,21,.2)", paddingBottom: 18 }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#ffffff", padding: 64, fontFamily: font ? "Exo 2" : undefined, fontStyle: "italic" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 18, letterSpacing: 2, color: "#5c5c5c", borderBottom: "1px solid #e5e5e5", paddingBottom: 18 }}>
           <span>PAFTA 01</span>
           <span>İNŞAAT & MÜHENDİSLİK</span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", fontSize: 100, lineHeight: 1, color: "#191715", letterSpacing: -2 }}>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 100, lineHeight: 1, color: "#111111", letterSpacing: -2 }}>
           <span>Her yapı bir</span>
-          <span style={{ color: "#7a1e29" }}>hesapla başlar.</span>
+          <span style={{ color: "#8b1520" }}>hesapla başlar.</span>
         </div>
-        <div style={{ display: "flex", fontSize: 20, letterSpacing: 1.5, color: "#191715", borderTop: "2px solid #191715", paddingTop: 18 }}>{meta}</div>
+        <div style={{ display: "flex", fontSize: 20, letterSpacing: 1.5, color: "#111111", borderTop: "2px solid #111111", paddingTop: 18 }}>{meta}</div>
       </div>
     ),
     { ...size, fonts: font ? [{ name: "Exo 2", data: font, weight: 800, style: "italic" }] : undefined },

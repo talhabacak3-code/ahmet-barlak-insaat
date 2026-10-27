@@ -115,7 +115,7 @@ export function ProcessStory() {
                 key={s.title}
                 data-step
                 className={`flex min-h-[46svh] flex-col justify-center border-b border-ink/15 py-12 transition-opacity duration-500 last:border-b-0 lg:min-h-[62svh] motion-reduce:opacity-100 ${
-                  active === i ? "opacity-100" : "opacity-40"
+                  active === i ? "opacity-100" : "opacity-[0.85]"
                 }`}
               >
                 <span className="flex items-center gap-3">
