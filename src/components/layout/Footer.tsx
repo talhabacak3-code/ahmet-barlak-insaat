@@ -15,7 +15,7 @@ export function Footer() {
 
           <nav aria-label="Alt menü" className="md:col-span-2">
             <p className="label mb-4 text-paper/50">Sayfalar</p>
-            <ul className="grid gap-2 text-sm">
+            <ul className="grid gap-2 ui-menu text-menu">
               <li>
                 <Link href="/" className="u-link">
                   Ana Sayfa

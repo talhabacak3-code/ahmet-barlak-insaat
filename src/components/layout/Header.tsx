@@ -88,7 +88,7 @@ export function Header() {
                 const active = pathname.startsWith(item.href);
                 return (
                   <li key={item.href}>
-                    <Link href={item.href} aria-current={active ? "page" : undefined} className="u-link group flex items-baseline gap-1.5 py-1 text-[0.95rem] font-medium">
+                    <Link href={item.href} aria-current={active ? "page" : undefined} className="u-link group flex items-baseline gap-1.5 py-1 ui-menu text-menu">
                       <span className="label text-[0.62rem] text-muted transition-colors group-hover:text-brand">{item.sheet}</span>
                       {item.label}
                     </Link>
@@ -105,7 +105,7 @@ export function Header() {
                 <br />
                 arayın
               </span>
-              <span className="text-[1.05rem] font-medium tracking-tight transition-colors group-hover:text-brand">{site.phone.display}</span>
+              <span className="ui-btn transition-colors group-hover:text-brand">{site.phone.display}</span>
             </a>
             <button
               ref={toggleRef}
@@ -140,14 +140,14 @@ export function Header() {
               <li className="border-b border-paper/15">
                 <Link href="/" className="flex items-baseline gap-4 py-5">
                   <span className="label text-brand-soft">01</span>
-                  <span className="display text-[clamp(2.2rem,11vw,3.5rem)]">Ana Sayfa</span>
+                  <span className="ui-menu text-mega leading-none">Ana Sayfa</span>
                 </Link>
               </li>
               {site.nav.map((item) => (
                 <li key={item.href} className="border-b border-paper/15">
                   <Link href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined} className="flex items-baseline gap-4 py-5">
                     <span className="label text-brand-soft">{item.sheet}</span>
-                    <span className="display text-[clamp(2.2rem,11vw,3.5rem)]">{item.label}</span>
+                    <span className="ui-menu text-mega leading-none">{item.label}</span>
                   </Link>
                 </li>
               ))}

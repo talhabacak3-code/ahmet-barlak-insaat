@@ -53,10 +53,10 @@ export default function HizmetlerPage() {
                 />
                 <figcaption className="label absolute bottom-0 right-0 bg-paper/85 px-3 py-1.5 text-[0.62rem] text-muted">Temsili görsel</figcaption>
               </figure>
-              <h2 id={`${s.slug}-baslik`} data-reveal="lines" className="display text-[clamp(2.2rem,5vw,4.4rem)] md:col-span-6">
+              <h2 id={`${s.slug}-baslik`} data-reveal="lines" className="display text-h2 md:col-span-6">
                 {s.title}
               </h2>
-              <p className="max-w-xl text-[1.08rem] leading-relaxed text-ink/80 md:col-span-5" data-reveal="fade">
+              <p className="max-w-xl text-lead text-ink/80 md:col-span-5" data-reveal="fade">
                 {s.description}
               </p>
               <div className="md:col-span-4">
@@ -72,7 +72,7 @@ export default function HizmetlerPage() {
                 <a
                   href={serviceHref(s)}
                   {...(site.whatsapp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="group mt-6 inline-flex h-12 items-center gap-3 rounded-full bg-[#25D366] pl-4 pr-5 font-medium text-ink transition-colors duration-300 hover:bg-[#1ebe5a]"
+                  className="group mt-6 inline-flex h-12 items-center gap-3 rounded-full bg-[#25D366] pl-4 pr-5 ui-btn text-ink transition-colors duration-300 hover:bg-[#1ebe5a]"
                 >
                   <WhatsAppIcon className="size-5" />
                   <span>{site.whatsapp ? "WhatsApp'tan bilgi alın" : "Bu hizmet için görüşelim"}</span>

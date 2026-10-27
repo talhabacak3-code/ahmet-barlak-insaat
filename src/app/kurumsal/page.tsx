@@ -37,11 +37,11 @@ export default function KurumsalPage() {
             </p>
           </div>
           <div className="lg:col-span-5">
-            <h2 id="yaklasim-baslik" data-reveal="lines" className="display text-[clamp(2rem,4.2vw,3.8rem)]">
+            <h2 id="yaklasim-baslik" data-reveal="lines" className="display text-h2">
               Bir binayı değil, bir süreci teslim ederiz.
             </h2>
           </div>
-          <div className="grid gap-6 text-[1.05rem] leading-relaxed text-ink/80 lg:col-span-4" data-reveal="fade" data-stagger>
+          <div className="grid gap-6 text-lead text-ink/80 lg:col-span-4" data-reveal="fade" data-stagger>
             <p>
               İnşaat, arsa sahibi için çoğu zaman hayatının en büyük kararlarından biridir. Bu yüzden işe yapıdan önce insandan başlıyoruz: ihtiyacı, bütçeyi ve
               beklentiyi netleştirmeden tek bir çizgi çizmiyoruz.
@@ -64,10 +64,10 @@ export default function KurumsalPage() {
             <span aria-hidden="true">§ </span>Yerel
           </p>
           <div className="lg:col-span-9">
-            <h2 id="yerel-baslik" data-reveal="lines" className="display text-[clamp(2rem,5vw,4.6rem)]">
+            <h2 id="yerel-baslik" data-reveal="lines" className="display text-h2">
               Afyonkarahisar&apos;da, şantiyeye yakın.
             </h2>
-            <p className="mt-8 max-w-xl text-[1.05rem] leading-relaxed text-ink/80" data-reveal="fade">
+            <p className="mt-8 max-w-xl text-lead text-ink/80" data-reveal="fade">
               Merkezimiz {site.address.district}, {site.address.street} adresinde. Kentin iklimini, yapı stokunu ve yerel süreçlerini bilerek çalışmak; hızlı
               karar, kolay ulaşım ve yerinde takip demek.
             </p>

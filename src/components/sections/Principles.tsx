@@ -17,7 +17,7 @@ export function Principles({ heading = "Nasıl çalışırız?" }: { heading?: s
           <p className="label text-paper/70 lg:col-span-3">
             <span aria-hidden="true">§ </span>İlkeler
           </p>
-          <h2 id="ilkeler-baslik" data-reveal="lines" className="display text-[clamp(2.4rem,6vw,5.6rem)] lg:col-span-8">
+          <h2 id="ilkeler-baslik" data-reveal="lines" className="display text-h2 lg:col-span-8">
             {heading}
           </h2>
         </div>
@@ -29,8 +29,8 @@ export function Principles({ heading = "Nasıl çalışırız?" }: { heading?: s
               className={`border-t border-paper/30 pt-6 ${["lg:col-span-5 lg:col-start-4", "lg:col-span-4 lg:mt-24", "lg:col-span-5 lg:col-start-2", "lg:col-span-5 lg:col-start-8 lg:-mt-12"][i]}`}
             >
               <div className="flex items-baseline justify-between gap-6">
-                <h3 className="display text-[clamp(1.8rem,3vw,2.6rem)]">{p.title}</h3>
-                <span className="font-display text-5xl italic text-paper/25" aria-hidden="true">
+                <h3 className="display text-h3">{p.title}</h3>
+                <span className="font-display text-5xl font-extrabold italic text-paper/25" aria-hidden="true">
                   {i + 1}
                 </span>
               </div>

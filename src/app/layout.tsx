@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { Exo_2, Inter, Rajdhani } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 import { pageMeta } from "@/lib/metadata";
@@ -9,12 +9,17 @@ import { MobileCallBar } from "@/components/layout/MobileCallBar";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { ScrollEffects } from "@/components/motion/ScrollEffects";
 
-// Başlık: Fraunces — DESIGN.md'deki özel serifin (ppmondwest) önerilen yedeği
-const fraunces = Fraunces({ subsets: ["latin", "latin-ext"], axes: ["opsz"], style: ["normal", "italic"], variable: "--font-fraunces", display: "swap" });
-// Gövde & arayüz: Geist — DESIGN.md'deki sans'ın (af) önerilen yedeği
-const geist = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist", display: "swap" });
-// Teknik çizim etiketleri (Geist ailesiyle uyumlu)
-const geistMono = Geist_Mono({ subsets: ["latin", "latin-ext"], weight: ["400"], variable: "--font-geist-mono", display: "swap" });
+/*
+ * Tipografi — logodaki geniş, kalın, sağa eğimli teknik karaktere yakın bir sistem
+ * (logo fontu kesin bilinmiyor; Eurostile/Microgramma Extended benzeri):
+ *  - Exo 2: başlıklar (hero 800 italik, H2/H3 700, vurgular 700 italik) — değişken font, tek dosya
+ *  - Rajdhani: menü (600) ve butonlar (700) — yalnızca kullanılan iki ağırlık
+ *  - Inter: paragraflar (400) — değişken font
+ * Hepsi latin-ext alt kümesiyle (Türkçe ğ ü ş ı İ ö ç), next/font ile kendi sunucumuzdan.
+ */
+const exo2 = Exo_2({ subsets: ["latin", "latin-ext"], style: ["normal", "italic"], variable: "--font-exo2", display: "swap" });
+const rajdhani = Rajdhani({ subsets: ["latin", "latin-ext"], weight: ["600", "700"], variable: "--font-rajdhani", display: "swap" });
+const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -57,7 +62,7 @@ const motionScript = `try{if(!matchMedia('(prefers-reduced-motion: reduce)').mat
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" suppressHydrationWarning className={`${fraunces.variable} ${geist.variable} ${geistMono.variable}`}>
+    <html lang="tr" suppressHydrationWarning className={`${exo2.variable} ${rajdhani.variable} ${inter.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: motionScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

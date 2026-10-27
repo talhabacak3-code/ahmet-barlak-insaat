@@ -79,10 +79,10 @@ export function ProcessStory() {
             <span aria-hidden="true">§ </span>Süreç
           </p>
           <div className="lg:col-span-9">
-            <h2 id="surec-baslik" data-reveal="lines" className="display text-[clamp(2.4rem,6vw,5.6rem)]">
+            <h2 id="surec-baslik" data-reveal="lines" className="display text-h2">
               Arsadan anahtara beş aşama.
             </h2>
-            <p data-reveal="fade" className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/70">
+            <p data-reveal="fade" className="mt-6 max-w-xl text-lead text-ink/70">
               Her aşamanın bir çıktısı, bir sorumlusu ve bir takvimi var. Kaydırdıkça yapının nasıl yükseldiğini izleyin.
             </p>
           </div>
@@ -128,8 +128,8 @@ export function ProcessStory() {
                   </span>
                   <span className="label text-brand">Aşama</span>
                 </span>
-                <h3 className="display mt-5 text-[clamp(2rem,4vw,3.4rem)]">{s.title}</h3>
-                <p className="mt-5 max-w-md text-[1.05rem] leading-relaxed text-ink/70">{s.text}</p>
+                <h3 className="display mt-5 text-h3">{s.title}</h3>
+                <p className="mt-5 max-w-md text-lead text-ink/70">{s.text}</p>
               </li>
             ))}
           </ol>

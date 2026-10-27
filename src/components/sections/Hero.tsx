@@ -19,22 +19,22 @@ export function Hero() {
       </div>
 
       <div className="shell grid gap-10 pb-10 pt-10 md:pt-14 lg:grid-cols-12 lg:gap-6 lg:pb-4">
-        <h1 id="hero-baslik" className="display text-[clamp(3rem,11.6vw,9.8rem)] lg:col-span-9 lg:text-[clamp(3rem,8.4vw,9.8rem)]">
-          <span className="hero-line block overflow-clip pb-[0.04em]">
+        <h1 id="hero-baslik" className="display display-hero text-hero lg:col-span-9">
+          <span className="hero-line block overflow-clip pb-[0.14em] -mb-[0.1em]">
             <span style={dl(0.15)}>Her yapı</span>
           </span>
-          <span className="hero-line block overflow-clip pb-[0.04em]">
+          <span className="hero-line block overflow-clip pb-[0.14em] -mb-[0.1em]">
             <span style={dl(0.25)}>
               bir <em className="italic text-brand">hesapla</em>
             </span>
           </span>
-          <span className="hero-line block overflow-clip pb-[0.04em]">
+          <span className="hero-line block overflow-clip pb-[0.14em] -mb-[0.1em]">
             <span style={dl(0.35)}>başlar.</span>
           </span>
         </h1>
 
         <div className="hero-fade flex flex-col justify-end gap-8 lg:col-span-3 lg:pb-4" style={dl(0.7)}>
-          <p className="max-w-md text-[1.05rem] leading-relaxed text-ink/80">
+          <p className="max-w-md text-lead text-ink/80">
             {site.name}; Afyonkarahisar&apos;da kaba inşaat taşeronluğundan anahtar teslim uygulamaya kadar tek muhatap.
           </p>
           <div className="flex flex-col gap-3 xs:flex-row lg:flex-col">
@@ -42,13 +42,13 @@ export function Hero() {
               href="/iletisim"
               className="group flex h-14 items-center justify-between gap-6 bg-ink px-6 text-paper transition-colors hover:bg-brand"
             >
-              <span className="font-medium">Proje görüşmesi</span>
+              <span className="ui-btn">Proje görüşmesi</span>
               <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
                 →
               </span>
             </Link>
             <a href={site.phone.href} className="group flex h-14 items-center justify-between gap-6 border border-ink/80 px-6 transition-colors hover:border-brand hover:text-brand">
-              <span className="font-medium">{site.phone.display}</span>
+              <span className="ui-btn">{site.phone.display}</span>
               <span className="label">Ara</span>
             </a>
           </div>

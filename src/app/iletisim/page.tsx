@@ -60,12 +60,12 @@ export default function IletisimPage() {
               className="hidden h-36 w-36 items-center justify-center rounded-full bg-brand text-paper transition-colors hover:bg-ink lg:flex"
             >
               <span className="label">Hemen</span>
-              <span className="display text-2xl">Ara</span>
+              <span className="ui-btn text-2xl">Ara</span>
             </MagneticButton>
           </div>
 
           <div className="lg:col-span-7 lg:col-start-6">
-            <h2 className="display text-[clamp(2rem,3.6vw,3.2rem)]">Proje talebi</h2>
+            <h2 className="display text-h2">Proje talebi</h2>
             <p className="mb-10 mt-4 max-w-lg leading-relaxed text-muted">Birkaç bilgi bırakın, sizi arayarak detayları konuşalım.</p>
             <Suspense fallback={null}>
               <ProjectRequestForm />
@@ -77,7 +77,7 @@ export default function IletisimPage() {
       <section aria-labelledby="konum-baslik" className="pb-[var(--section-y)]">
         <div className="shell">
           <div className="mb-8 flex items-end justify-between gap-6">
-            <h2 id="konum-baslik" className="display text-[clamp(2rem,3.6vw,3.2rem)]">
+            <h2 id="konum-baslik" className="display text-h2">
               Konum
             </h2>
             <p className="label text-muted">{site.coordinates}</p>

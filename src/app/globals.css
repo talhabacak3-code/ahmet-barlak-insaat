@@ -13,10 +13,30 @@
   --color-brand-soft: #d4aeb1;
   --color-stone: #b8afa2;
 
-  /* DESIGN.md fontları: ppmondwest → Fraunces (başlık), af → Geist (gövde & arayüz) */
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-sans: var(--font-geist), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Başlık: Exo 2 · Menü/buton/etiket: Rajdhani · Paragraf: Inter */
+  --font-display: var(--font-exo2), "Arial", sans-serif;
+  --font-ui: var(--font-rajdhani), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-rajdhani), ui-monospace, monospace;
+
+  /* Duyarlı yazı ölçeği — mobil (~375px) → tablet → masaüstü (~1440px+) */
+  --text-hero: clamp(2.75rem, 1.5rem + 6vw, 8.25rem);
+  --text-hero--line-height: 0.98;
+  --text-page: clamp(2.5rem, 1.35rem + 5vw, 7rem);
+  --text-page--line-height: 1;
+  --text-h2: clamp(2rem, 1.25rem + 3.4vw, 4.5rem);
+  --text-h2--line-height: 1.04;
+  --text-h3: clamp(1.4rem, 1.05rem + 1.4vw, 2.4rem);
+  --text-h3--line-height: 1.12;
+  --text-statement: clamp(1.6rem, 1.05rem + 2.3vw, 3.1rem);
+  --text-statement--line-height: 1.2;
+  --text-lead: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem);
+  --text-lead--line-height: 1.6;
+  --text-body: clamp(0.975rem, 0.94rem + 0.18vw, 1.0625rem);
+  --text-body--line-height: 1.65;
+  --text-menu: clamp(1.0625rem, 1rem + 0.2vw, 1.15rem);
+  --text-mega: clamp(2.25rem, 1.5rem + 6vw, 3.6rem);
+  --text-btn: clamp(1.0625rem, 1rem + 0.25vw, 1.2rem);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-3: cubic-bezier(0.65, 0, 0.35, 1);
@@ -41,6 +61,8 @@ html {
 }
 body {
   font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
   background: var(--color-paper);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
@@ -69,12 +91,13 @@ svg {
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
+/* Teknik etiket — Rajdhani, büyük harf, aralıklı */
 @utility label {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.72rem;
-  line-height: 1.3;
-  letter-spacing: 0.08em;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 @utility hairline {
@@ -84,13 +107,44 @@ svg {
   padding-block: var(--section-y);
 }
 
-/* Serif başlık — DESIGN.md: her zaman 400, sıkı izleme, liga kapalı */
+/* Menü — Rajdhani SemiBold */
+@utility ui-menu {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+/* Buton — Rajdhani Bold */
+@utility ui-btn {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: var(--text-btn);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* H2/H3 — Exo 2 Bold, dik */
 .display {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+/* Vurgu — Exo 2 Bold İtalik (italik yalnızca stratejik vurgularda) */
+.display em,
+em.accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+}
+/* Hero başlıkları — Exo 2 ExtraBold İtalik */
+.display-hero {
+  font-weight: 800;
+  font-style: italic;
   letter-spacing: -0.02em;
-  line-height: 1.04;
-  font-feature-settings: "liga" 0;
+}
+.display-hero em {
+  font-weight: 800;
 }
 
 /* Grid lines — paftadaki aks sistemi */

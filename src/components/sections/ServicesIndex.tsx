@@ -11,7 +11,7 @@ export function ServicesIndex() {
           <p className="label text-brand lg:col-span-3">
             <span aria-hidden="true">§ </span>Hizmetler
           </p>
-          <h2 id="hizmetler-baslik" data-reveal="lines" className="display text-[clamp(2.4rem,6vw,5.6rem)] lg:col-span-7">
+          <h2 id="hizmetler-baslik" data-reveal="lines" className="display text-h2 lg:col-span-7">
             Temelden anahtara, dört hizmet.
           </h2>
           <Link href="/hizmetler" className="label u-link self-end justify-self-start text-muted hover:text-ink lg:col-span-2 lg:justify-self-end">
@@ -34,7 +34,7 @@ export function ServicesIndex() {
                 <span className="label relative text-muted transition-[color,transform] duration-500 group-hover:translate-x-3 group-hover:text-paper/70 md:col-span-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="display relative text-[clamp(1.6rem,3.4vw,3rem)] transition-colors duration-500 group-hover:text-paper md:col-span-4">
+                <span className="display relative text-h3 transition-colors duration-500 group-hover:text-paper md:col-span-4">
                   {s.title}
                 </span>
                 <span className="relative col-span-2 col-start-2 max-w-md text-[0.95rem] leading-relaxed text-muted transition-colors duration-500 group-hover:text-paper/80 md:col-span-4 md:col-start-auto">

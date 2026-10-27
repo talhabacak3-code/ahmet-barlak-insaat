@@ -22,10 +22,10 @@ export function ContactFinale({ heading = "Projenizi konuşalım." }: { heading?
             <span aria-hidden="true">§ </span>İletişim
           </p>
           <div className="lg:col-span-9">
-            <h2 id="final-baslik" data-reveal="lines" className="display text-[clamp(2.4rem,6vw,5.6rem)]">
+            <h2 id="final-baslik" data-reveal="lines" className="display text-h2">
               {heading}
             </h2>
-            <p data-reveal="fade" className="mt-6 max-w-xl text-[1.08rem] leading-relaxed text-paper/60">
+            <p data-reveal="fade" className="mt-6 max-w-xl text-lead text-paper/60">
               Keşif, fiyat ya da henüz yalnızca bir fikir. İlk görüşme bir telefon uzaklığında.
             </p>
           </div>
@@ -66,7 +66,7 @@ export function ContactFinale({ heading = "Projenizi konuşalım." }: { heading?
               className="flex size-28 items-center justify-center rounded-full bg-brand text-paper transition-colors duration-500 hover:bg-paper hover:text-brand md:size-36"
             >
               <span className="label">Hemen</span>
-              <span className="display text-2xl md:text-3xl">Ara</span>
+              <span className="ui-btn text-2xl md:text-3xl">Ara</span>
             </MagneticButton>
           </div>
 
@@ -109,7 +109,7 @@ export function ContactFinale({ heading = "Projenizi konuşalım." }: { heading?
                   </span>
                 </span>
                 <span>
-                  <span className="display block text-[clamp(1.6rem,2.4vw,2.2rem)]">{a.title}</span>
+                  <span className="display block text-h3">{a.title}</span>
                   <span className="mt-2 block text-sm text-paper/55">{a.sub}</span>
                 </span>
               </a>

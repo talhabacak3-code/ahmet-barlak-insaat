@@ -60,7 +60,7 @@ export function ProjectsRail() {
               <p className="label text-brand">
                 <span aria-hidden="true">§ </span>Projeler
               </p>
-              <h2 id="projeler-baslik" className="display mt-6 text-[clamp(2.4rem,5.4vw,5rem)]">
+              <h2 id="projeler-baslik" className="display mt-6 text-h2">
                 Her proje bir pafta.
               </h2>
             </div>
@@ -69,7 +69,7 @@ export function ProjectsRail() {
                 Tamamlanan ve devam eden işlerimizi; konumu, türü ve durumuyla birlikte teknik bir kayıt olarak sunuyoruz.
               </p>
               <Link href="/projeler" className="group flex h-14 w-fit items-center gap-6 border border-ink/80 px-6 transition-colors hover:border-brand hover:text-brand">
-                <span className="font-medium">Tüm projeler</span>
+                <span className="ui-btn">Tüm projeler</span>
                 <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
                   →
                 </span>
